@@ -1,0 +1,34 @@
+const mongoose = require('mongoose');
+const data = require('./data');
+//Property Model
+const Property = require('./models/Property');
+
+mongoose.connect('mongodb://localhost/airbnb-gallery', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {
+  console.log('connected to mongodb://localhost/airbnb-gallery');
+});
+
+// create 20 homes
+for (let i = 0; i < 20; i++) {
+  let uniqueDescription = data.createDescription();
+  let newPropertyObj = {
+    description: uniqueDescription,
+    starRating: data.createStarRating(),
+    reviewTotal: data.createTotalReviews(),
+    superhost: data.isSuperhost(),
+    location: data.createLocation(uniqueDescription),
+    images: data.createImageCollection()
+  };
+  //create new property
+  let newProperty = new Property(newPropertyObj);
+
+  newProperty.save((err) => {
+    err ? console.log('error', err) : console.log('inserted data')
+  })
+}

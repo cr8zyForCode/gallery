@@ -137,23 +137,23 @@ function randomNumbers(quantity, data) {
   return result
 };
 
-let descriptionData = createDescription();
-let starRatingData = createStarRating();
-let reviewData = createTotalReviews();
-let superhostData = isSuperhost();
-let locationData = createLocation(descriptionData);
-let imagesData = createImageCollection();
-console.log('description', descriptionData)
-console.log('star rating', starRatingData)
-console.log('review data', reviewData)
-console.log('superhost', superhostData)
-console.log('location data', locationData)
-console.log('images data', imagesData);
+// let descriptionData = createDescription();
+// let starRatingData = createStarRating();
+// let reviewData = createTotalReviews();
+// let superhostData = isSuperhost();
+// let locationData = createLocation(descriptionData);
+// let imagesData = createImageCollection();
+// console.log('description', descriptionData)
+// console.log('star rating', starRatingData)
+// console.log('review data', reviewData)
+// console.log('superhost', superhostData)
+// console.log('location data', locationData)
+// console.log('images data', imagesData);
 
 //export the data
-exports.descriptionData = descriptionData;
-exports.starRatingData = starRatingData;
-exports.reviewData = reviewData;
-exports.superhostData = superhostData;
-exports.locationData = locationData;
-exports.imagesData = imagesData;
+exports.createDescription = createDescription;
+exports.createStarRating = createStarRating;
+exports.createTotalReviews = createTotalReviews;
+exports.isSuperhost = isSuperhost;
+exports.createLocation = createLocation;
+exports.createImageCollection = createImageCollection;
