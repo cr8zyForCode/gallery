@@ -18,4 +18,5 @@ let propertySchema = new Schema({
 var Property = mongoose.model('Property', propertySchema);
 
 //create a new image document for how long the images data is
-module.exports = Property;
+module.exports.Image = Image;
+module.exports.Property = Property;
