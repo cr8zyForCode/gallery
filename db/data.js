@@ -150,3 +150,10 @@ console.log('superhost', superhostData)
 console.log('location data', locationData)
 console.log('images data', imagesData);
 
+//export the data
+exports.descriptionData = descriptionData;
+exports.starRatingData = starRatingData;
+exports.reviewData = reviewData;
+exports.superhostData = superhostData;
+exports.locationData = locationData;
+exports.imagesData = imagesData;
