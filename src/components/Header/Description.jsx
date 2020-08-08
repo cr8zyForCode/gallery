@@ -4,7 +4,7 @@ import React from 'react';
 const Description = ({ description }) => {
   let styles = {
     fontSize: '20px',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   }
   return (
     <div className="description" style={styles}>
