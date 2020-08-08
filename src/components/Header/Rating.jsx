@@ -2,17 +2,22 @@ import React from 'react';
 //import data with a call
 
 const Rating = ({ starRating, totalReviews }) => {
-  let styles = {
+  let containerStyle = {
     display: 'flex',
-    padding: '0',
-    margin: '0'
-
+    fontSize: '14px'
+  };
+  let totalReviewStyles = {
+    cursor: 'pointer',
+  };
+  let starRatingStyles = {
+    cursor: 'pointer',
+    fontWeight: 'bold'
   }
   return (
-    <div className="rating" style={styles}>
+    <div className="rating" style={containerStyle}>
       <ion-icon name="star-outline"></ion-icon>
-      <p>{starRating}</p>
-      <p>({totalReviews})</p>
+      <p style={starRatingStyles}>{starRating}</p>
+      <p style={totalReviewStyles}>({totalReviews})</p>
     </div>
   )
 }
