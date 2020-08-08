@@ -4,7 +4,9 @@ import React, { useState } from 'react';
 const Buttons = () => {
   const [heartFill, setHeartFiller] = useState(false);
   let containerStyle = {
-    display: 'flex'
+    display: 'flex',
+    flex: '8',
+    justifyContent: 'flex-end'
   }
 
   let filledHeartStyle = {

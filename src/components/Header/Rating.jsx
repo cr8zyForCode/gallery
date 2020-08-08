@@ -6,6 +6,9 @@ const Rating = ({ starRating, totalReviews }) => {
     display: 'flex',
     fontSize: '14px'
   };
+  let starStyle = {
+    color: 'red'
+  };
   let totalReviewStyles = {
     cursor: 'pointer',
   };
@@ -15,7 +18,7 @@ const Rating = ({ starRating, totalReviews }) => {
   }
   return (
     <div className="rating" style={containerStyle}>
-      <ion-icon name="star-outline"></ion-icon>
+      <ion-icon name="star" style={starStyle} />
       <p style={starRatingStyles}>{starRating}</p>
       <p style={totalReviewStyles}>({totalReviews})</p>
     </div>
