@@ -1,5 +1,6 @@
-let db = require('../index.js');
-let Schema = db.Schema;
+// let db = require('../index.js');
+let mongoose = require('mongoose');
+let Schema = mongoose.Schema;
 
 let imagesSchema = new Schema({
   imageURL: String,
@@ -15,8 +16,7 @@ let propertySchema = new Schema({
   images: [imagesSchema]
 });
 
-var Property = db.model('Property', propertySchema);
+let Property = mongoose.model('Property', propertySchema);
+console.log('this is property', Property)
 
-//create a new image document for how long the images data is
-module.exports.Image = Image;
-module.exports.Property = Property;
+module.exports = Property;
