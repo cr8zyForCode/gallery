@@ -1,9 +1,17 @@
 import React from 'react';
 
-const App = () => (
-  <div>
-    <p>Hello World</p>
-  </div>
-);
+import Header from './Header/Header.jsx';
+
+const App = () => {
+  let styles = {
+    padding: '0',
+    margin: '0'
+  }
+  return (
+    <div styles={styles}>
+      <Header />
+    </div >
+  )
+}
 
 export default App;
