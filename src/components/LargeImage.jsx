@@ -1,11 +1,11 @@
 import React from 'react';
 
-const LargeImage = () => {
+const LargeImage = ({ imageUrl }) => {
   return (
-    <div className="largeImage">
-      <img src="#" className="image" />
+    <div >
+      <img src={imageUrl} className="largeImage" width="560" height="300" />
     </div>
   )
 }
 
-export default LargeImage
+export default LargeImage;
