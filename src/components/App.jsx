@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Header from './Header/Header.jsx';
+import Header from './Header.jsx';
 import LargeImage from './LargeImage.jsx';
 
 const App = () => {
