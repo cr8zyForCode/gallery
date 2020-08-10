@@ -1,12 +1,12 @@
 import React from 'react';
-//import data with a call
 
 const Location = ({ location }) => {
   let styles = {
-    fontSize: '14px',
-    color: 'rgb(113, 113, 113)',
-    textDecoration: 'underline',
-    cursor: 'pointer'
+    // textDecoration: 'underline',
+    borderBottom: '1px solid #717171',
+    cursor: 'pointer',
+    color: '#717171',
+    paddingLeft: '4px'
   }
   return (
     <div className="location" style={styles}>

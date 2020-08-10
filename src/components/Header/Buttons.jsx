@@ -3,38 +3,56 @@ import React, { useState } from 'react';
 
 const Buttons = () => {
   const [heartFill, setHeartFiller] = useState(false);
+  const [shareHoverColor, setShareHoverColor] = useState(null);
+  const [saveHoverColor, setSaveHoverColor] = useState(null);
+
+  let clickHandler = (e) => {
+    setHeartFiller(!heartFill)
+  };
+
+  let onMouseEnterHandler = (e) => {
+    setHoverColor("#dddddd")
+  }
+
+  let onMouseLeaveHandler = (e) => {
+    setHoverColor("")
+  }
+
+  let outlinedHeart = (<ion-icon name="heart-outline" onClick={clickHandler} />);
+  let filledHeart = (<ion-icon name="heart" onClick={clickHandler} style={filledHeartStyle} />);
+
   let containerStyle = {
     display: 'flex',
     flex: '8',
     justifyContent: 'flex-end'
-  }
+  };
 
   let filledHeartStyle = {
     color: 'red'
-  }
+  };
 
-  let buttonStyle = {
-    display: 'flex',
-    cursor: 'pointer',
-    backgroundColor: "rgb(113, 113, 113)"
-  }
+  // let buttonStyle = {
+  //   display: 'flex',
+  //   justifyContent: 'space-between',
+  //   cursor: 'pointer',
+  //   backgroundColor: hoverColor,
+  //   padding: '7px',
+  // };
 
-  let clickHandler = (e) => {
-    setHeartFiller(!heartFill)
-  }
-
-  let outlinedHeart = (<ion-icon name="heart-outline" onClick={clickHandler} />);
-  let filledHeart = (<ion-icon name="heart" onClick={clickHandler} style={filledHeartStyle} />)
+  let textStyle = {
+    marginLeft: '5px',
+    textDecoration: 'underline'
+  };
 
   return (
     <div className="description" style={containerStyle}>
-      <div style={buttonStyle}>
+      <div onMouseEnter={onMouseEnterHandler} onMouseLeave={onMouseLeaveHandler}>
         <ion-icon name="share-outline"></ion-icon>
-        <p>Share</p>
+        <p style={textStyle}>Share</p>
       </div>
-      <div style={buttonStyle}>
+      <div onMouseEnter={onMouseEnterHandler} onMouseLeave={onMouseLeaveHandler}>
         {!heartFill ? outlinedHeart : filledHeart}
-        <p> Save</p>
+        <p style={textStyle}> Save</p>
       </div>
     </div >
   )

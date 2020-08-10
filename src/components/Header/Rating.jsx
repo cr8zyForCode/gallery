@@ -4,17 +4,18 @@ import React from 'react';
 const Rating = ({ starRating, totalReviews }) => {
   let containerStyle = {
     display: 'flex',
-    fontSize: '14px'
   };
   let starStyle = {
-    color: 'red'
+    color: '#ff385c'
   };
   let totalReviewStyles = {
     cursor: 'pointer',
+    color: '#717171',
+    paddingLeft: '4px'
   };
   let starRatingStyles = {
     cursor: 'pointer',
-    fontWeight: 'bold'
+    paddingLeft: '4px'
   }
   return (
     <div className="rating" style={containerStyle}>
