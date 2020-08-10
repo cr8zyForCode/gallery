@@ -16,5 +16,5 @@ let propertySchema = new Schema({
 });
 
 var Property = mongoose.model('Property', propertySchema);
-
+//comment
 module.exports = Property;
