@@ -1,31 +1,28 @@
 import React, { useState } from 'react';
-//import data with a call
+
 import Description from './Header/Description.jsx';
 import Rating from './Header/Rating.jsx';
 import Location from './Header/Location.jsx';
-import Buttons from './Header/Buttons.jsx';
+import Button from './Header/Button.jsx';
 
-const Header = () => {
+import styles from './Header.scss';
+
+export default () => {
   const [data, setData] = useState({});
-  let containerStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-  };
-  let homeStyle = {
-    display: 'flex'
-  }
-  return (
-    <div className="header" style={containerStyle}>
-      <Description className="description" description="beautiful home" />
-      <div className="text-container" style={homeStyle}>
-        <Rating className="rating" starRating="4.95" totalReviews="69" />
-        <Location className="location" location="RSM, CA United States" />
-        <Buttons className="buttons" />
-      </div>
-      <p id="hello">hello world</p>
 
+  return (
+    <div className={styles.header}>
+      <Description description="Laguna Beach Home" />
+      <div className={styles.owner} >
+        <div className={styles.text}>
+          <Rating starRating="4.95" totalReviews="69" />
+          <Location location="Laguna Beach, CA United States" />
+        </div>
+        <div className={styles.buttons}>
+          <Button buttonName="Share" />
+          <Button buttonName="Save" />
+        </div>
+      </div>
     </div>
   )
-}
-
-export default Header
+};

@@ -1,26 +1,13 @@
 import React from 'react';
-//import data with a call
+
+import styles from './Rating.scss';
 
 const Rating = ({ starRating, totalReviews }) => {
-  let containerStyle = {
-    display: 'flex',
-    fontSize: '14px'
-  };
-  let starStyle = {
-    color: 'red'
-  };
-  let totalReviewStyles = {
-    cursor: 'pointer',
-  };
-  let starRatingStyles = {
-    cursor: 'pointer',
-    fontWeight: 'bold'
-  }
   return (
-    <div className="rating" style={containerStyle}>
-      <ion-icon name="star" style={starStyle} />
-      <p style={starRatingStyles}>{starRating}</p>
-      <p style={totalReviewStyles}>({totalReviews})</p>
+    <div className={styles.container} >
+      <ion-icon name="star" />
+      <p className={styles.rating}>{starRating}</p>
+      <p className={styles.reviews}>({totalReviews})</p>
     </div>
   )
 }

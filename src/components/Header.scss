@@ -1,0 +1,21 @@
+$colour: red;
+
+.header {
+  display: flex;
+  flex-direction: column;
+}
+
+.owner {
+  display: flex;
+  padding-top: 10px;
+}
+
+.text {
+  display: flex;
+  flex: 8
+}
+
+.buttons {
+  display: flex;
+  flex: 1;
+}

@@ -1,0 +1,51 @@
+%template {
+  display: flex;
+  border: 1px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+%save-template {
+  display: block;
+  height: 16px;
+  width: 16px;
+  padding-left: 4px;
+  stroke: currentColor;
+  stroke-width: 2;
+  overflow: visible;
+}
+
+.container {
+  @extend %template;
+}
+
+.hover {
+  @extend %template;
+  background: #f7f7f7;
+}
+
+.save {
+  fill: none;
+  @extend %save-template;
+}
+
+.save-filled {
+  fill: #ff385c;
+  @extend %save-template;
+}
+
+.share {
+  padding-left: 4px;
+  display: block;
+  height: 16px;
+  width: 16px;
+  fill: currentColor;
+
+}
+
+.buttonName {
+  color: #717171;
+  text-decoration: underline;
+  padding-left: 6px;
+}
+
