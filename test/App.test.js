@@ -1,23 +1,19 @@
-import App from '../src/components/App.jsx';
+// import App from '../src/components/App';
 
-describe('<App/>', () => {
-  let wrapper;
-  beforeEach(() => {
-    wrapper = shallow(<App />)
-  });
+// describe('<App /> renders () => {
+//   let wrapper = shallow(<App />);
 
-  test('to exist', () => {
-    expect(wrapper).toBeDefined();
-  })
+// it('should exist', () => {
+//   expect(wrapper.exists()).to.equal(true);
+// })
 
-  test('contains Header and LargeImage exist', () => {
-    expect(wrapper.find('Header')).toBeDefined()
-    expect(wrapper.find('LargeImage')).toBeDefined()
-  })
+// it('should contain three components. A text, image1 and image2 component', () => {
+//   expect(wrapper.children()).toHaveLength(3);
 
-  test('LargeImage imageURL is an image', () => {
-    expect(wrapper.find('LargeImage').prop('imageUrl')).toContain('jpeg');
-  });
+// });
 
-
-});
+// it('should have a className called container', () => {
+//   expect(wrapper.find('div').hasClass('container')).to.equal(true);
+// });
+// //
+// });
