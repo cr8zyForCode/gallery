@@ -1,29 +1,33 @@
 import React from 'react';
 
 
-import Header from './Header/Header.jsx';
-import SmallImages from './SmallImages.jsx';
-import LargeImage from './LargeImage.jsx';
+import Header from './Header.jsx';
+import Image from './Image.jsx';
 
 import styles from './App.scss';
 
 export default () => {
-  const App = () => {
-    let sampleImages = [
-      ('https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-backyard/backyard1.jpeg'),
-      ('https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-backyard/backyard1.jpeg'),
-      ('https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-backyard/backyard1.jpeg'),
-      ('https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-backyard/backyard1.jpeg'),
-      ('https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-backyard/backyard1.jpeg')
-    ];
-    let imageUrl = "https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-backyard/backyard1.jpeg"
+  let sampleImages = [
+    ('https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-backyard/backyard1.jpeg'),
+    ('https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-backyard/backyard1.jpeg'),
+    ('https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-backyard/backyard1.jpeg'),
+    ('https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-backyard/backyard1.jpeg'),
+    ('https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-backyard/backyard1.jpeg')
+  ];
+  let imageUrl = "https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-backyard/backyard1.jpeg"
 
-    return (
-      <div className={styles.app}>
-        <Header />
-        <LargeImage imageUrl={imageUrl} />
-        <SmallImages images={sampleImages} />
-      </div >
-    )
-  }
+  return (
+    <div className={styles.app}>
+      <Header />
+      <div className={styles.images}>
+        <Image image={imageUrl} w="560" h="310" size='large' />
+        <div className={styles.small}>
+          <Image image={imageUrl} w="270" h="150" />
+          <Image image={imageUrl} w="270" h="150" />
+          <Image image={imageUrl} w="270" h="150" />
+          <Image image={imageUrl} w="270" h="150" />
+        </div>
+      </div>
+    </div >
+  )
 }
