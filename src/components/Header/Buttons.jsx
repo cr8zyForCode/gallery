@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 //import data with a call
-
-const Buttons = () => {
+export default () => {
   const [heartFill, setHeartFiller] = useState(false);
   const [shareHoverColor, setShareHoverColor] = useState(null);
   const [saveHoverColor, setSaveHoverColor] = useState(null);
@@ -57,5 +56,3 @@ const Buttons = () => {
     </div >
   )
 }
-
-export default Buttons;
