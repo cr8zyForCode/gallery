@@ -1,15 +1,8 @@
 import React from 'react';
-//import data with a call
+import styles from './Description.scss';
 
-const Description = ({ description }) => {
-  let styles = {
-    fontSize: '26px'
-  }
+export default ({ description }) => {
   return (
-    <div className="description" style={styles}>
-      {description}
-    </div>
+    <p className={styles.description}>{description}</p>
   )
-}
-
-export default Description;
+};

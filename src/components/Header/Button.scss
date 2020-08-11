@@ -1,24 +1,26 @@
-%spacing {
+%template {
   display: flex;
   border: 1px;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 %save-template {
   display: block;
   height: 16px;
   width: 16px;
+  padding-left: 4px;
   stroke: currentColor;
   stroke-width: 2;
   overflow: visible;
 }
 
 .container {
-  @extend %spacing;
+  @extend %template;
 }
 
 .hover {
-  @extend %spacing;
+  @extend %template;
   background: #f7f7f7;
 }
 
@@ -33,6 +35,7 @@
 }
 
 .share {
+  padding-left: 4px;
   display: block;
   height: 16px;
   width: 16px;
