@@ -4,13 +4,40 @@
   border-radius: 8px;
 }
 
+%save-template {
+  display: block;
+  height: 16px;
+  width: 16px;
+  stroke: currentColor;
+  stroke-width: 2;
+  overflow: visible;
+}
+
 .container {
   @extend %spacing;
 }
 
-.container-hov {
+.hover {
   @extend %spacing;
   background: #f7f7f7;
+}
+
+.save {
+  fill: none;
+  @extend %save-template;
+}
+
+.save-filled {
+  fill: #ff385c;
+  @extend %save-template;
+}
+
+.share {
+  display: block;
+  height: 16px;
+  width: 16px;
+  fill: currentColor;
+
 }
 
 .buttonName {
