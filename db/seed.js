@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const data = require('./data');
 //Property Model
-const Property = require('./models/Property');
+const { Property } = require('./models/Property');
 
 mongoose.connect('mongodb://localhost/airbnb-gallery', {
   useNewUrlParser: true,

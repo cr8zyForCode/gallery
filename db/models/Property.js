@@ -12,9 +12,11 @@ let propertySchema = new Schema({
   reviewTotal: Number,
   superhost: Boolean,
   location: String,
-  images: [imagesSchema]
+  images: Array
 });
 
 var Property = mongoose.model('Property', propertySchema);
+var Image = mongoose.model('image', imagesSchema);
 //comment
-module.exports = Property;
+module.exports.Property = Property;
+module.exports.Image = Image;
