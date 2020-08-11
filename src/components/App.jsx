@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 import Header from './Header/Header.jsx';
 import SmallImages from './SmallImages.jsx';
 import LargeImage from './LargeImage.jsx';
