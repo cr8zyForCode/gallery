@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import styles from './Button.scss';
 
-export default ({ buttonName, buttonIcon }) => {
+export default ({ buttonName }) => {
   let [background, setBackground] = useState(styles.container);
   let [heartColor, setHearColor] = useState(styles.save);
 
