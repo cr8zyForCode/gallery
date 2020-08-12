@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import Description from './Header/Description.jsx';
 import Rating from './Header/Rating.jsx';
