@@ -1,4 +1,4 @@
-const { Image } = require('./models/Property');
+const { Images, Room } = require('./models/Property');
 /*------------- START OF HELPER FUNCTIONS------------- */
 //create a randomizer function (min, max)
 function randomizer(min, max, isRounded = true) {
@@ -23,14 +23,14 @@ function createArrayOfImgs(quantity, imageType) {
     //selects if its either a bedroom or restroom
     let num = randomizer(0, max);
 
-    if (imageType === 'bedrooms') {
+    if (imageType === 'bedroom') {
       url = `https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-rooms/room${num}.jpeg`
     } else {
       url = `https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-bathrooms/bathroom${num}.jpeg`
     }
 
     if (!numbers.includes(num)) {
-      let newImage = new Image({
+      let newImage = new Room({
         imageURL: url,
         description: imageType
       })
@@ -80,8 +80,8 @@ function createLocation(desc) {
 //kitchens 0 - 4 https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-kitchens/kitchen0.jpeg
 //rooms 0 - 14  https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-rooms/room11.jpeg
 
-function createImageCollection(Image) {
-  let images = {};
+function createImageCollection() {
+  let images = new Images();
   //1 house
   images.house = `https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-houses/house${randomizer(0, 8)}.jpeg`;
   //1 backyard
@@ -93,7 +93,7 @@ function createImageCollection(Image) {
   images.bedrooms = createArrayOfImgs(numberOfBedrooms, 'bedroom');
   // images.bedrooms 2-5
   let numberOfBathrooms = randomizer(2, 5);
-  images.bathrooms = createArrayOfImgs(numberOfBathrooms, 'bathroom', Image);
+  images.bathrooms = createArrayOfImgs(numberOfBathrooms, 'bathroom');
   return images
 };
 

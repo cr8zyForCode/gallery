@@ -1,9 +1,17 @@
 let mongoose = require('mongoose')
 let Schema = mongoose.Schema;
 
-let imagesSchema = new Schema({
+let roomSchema = new Schema({
   imageURL: String,
   description: String
+});
+
+let allImagesSchema = new Schema({
+  house: String,
+  backyard: String,
+  kitchen: String,
+  bedrooms: Array,
+  bathrooms: Array
 });
 
 let propertySchema = new Schema({
@@ -13,11 +21,13 @@ let propertySchema = new Schema({
   reviewTotal: Number,
   superhost: Boolean,
   location: String,
-  images: Array
+  images: allImagesSchema
 });
 
-var Property = mongoose.model('Property', propertySchema);
-var Image = mongoose.model('image', imagesSchema);
+var Property = mongoose.model('property', propertySchema);
+var Images = mongoose.model('image', allImagesSchema);
+var Room = mongoose.model('room', roomSchema);
 //comment
 module.exports.Property = Property;
-module.exports.Image = Image;
+module.exports.Room = Room;
+module.exports.Images = Images;
