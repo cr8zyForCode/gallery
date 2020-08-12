@@ -15,7 +15,6 @@ export default () => {
   const [images, setImages] = useState({});
   const [home, setHome] = useState({});
 
-
   let getHouse = () => {
     let id = Math.floor(Math.random() * 20);
     axios.get(`/properties/${id}`)
@@ -27,9 +26,6 @@ export default () => {
         setLocation(house.data[0].location);
         setImages(house.data[0].images);
         setHome(house.data[0]);
-      })
-      .then(() => {
-        console.log('we received the house', home)
       })
       .catch(console.log)
   }
