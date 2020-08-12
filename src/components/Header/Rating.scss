@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+}
+
+.star {
+  color: #ff385c;
+}
+
+.rating {
+  cursor: pointer;
+  padding-left: 4px;
+  font-weight: 600;
+}
+
+.reviews{
+  cursor: pointer;
+  color: #717171;
+  padding-left: 4px;
+}
+
+ion-icon {
+  color: red;
+}
