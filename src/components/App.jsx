@@ -13,7 +13,9 @@ export default () => {
   const [superhost, setSuperhost] = useState('');
   const [location, setLocation] = useState('');
   const [images, setImages] = useState({});
-  const [home, setHome] = useState({});
+  const [image4, setImage4] = useState('');
+  const [image5, setImage5] = useState('');
+  // const [home, setHome] = useState({});
 
   let getHouse = () => {
     let id = Math.floor(Math.random() * 20);
@@ -25,7 +27,9 @@ export default () => {
         setSuperhost(house.data[0].superhost);
         setLocation(house.data[0].location);
         setImages(house.data[0].images);
-        setHome(house.data[0]);
+        setImage4(house.data[0].images.bedrooms[0].imageURL);
+        setImage5(house.data[0].images.bathrooms[0].imageURL);
+        // setHome(house.data[0]);
       })
       .catch(console.log)
   }
@@ -44,8 +48,8 @@ export default () => {
         <div className={styles.small}>
           <Image image={images.backyard} w="270" h="150" />
           <Image image={images.kitchen} w="270" h="150" />
-          <Image image={imageUrl} w="270" h="150" />
-          <Image image={imageUrl} w="270" h="150" />
+          <Image image={image4} w="270" h="150" />
+          <Image image={image5} w="270" h="150" />
         </div>
       </div>
     </div >
