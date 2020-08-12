@@ -1,6 +1,5 @@
-//generate fake data inside of mongodb server
-
-/*------------- HELPER FUNCTIONS------------- */
+const { Images, Room } = require('./models/Property');
+/*------------- START OF HELPER FUNCTIONS------------- */
 //create a randomizer function (min, max)
 function randomizer(min, max, isRounded = true) {
   let randomNumber;
@@ -13,40 +12,48 @@ function randomizer(min, max, isRounded = true) {
 };
 
 function createArrayOfImgs(quantity, imageType) {
-  //bring in the url for bathrooms and bedrooms
   let url, max;
   //bedrooms have 14 images and bathrooms have 8
   (imageType === 'bedrooms') ? max = 14 : max = 8;
-  //array
   let result = [];
-  //random numbers = []
+  //random numbers storage = []
   let numbers = [];
   //do a while loop until q = 0
   while (quantity > 0) {
+    //selects if its either a bedroom or restroom
     let num = randomizer(0, max);
-    (imageType === 'bedrooms') ? url = `https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-rooms/room${num}.jpeg` : url = `https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-bathrooms/bathroom${num}.jpeg`;
+
+    if (imageType === 'bedroom') {
+      url = `https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-rooms/room${num}.jpeg`
+    } else {
+      url = `https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-bathrooms/bathroom${num}.jpeg`
+    }
+
     if (!numbers.includes(num)) {
-      result.push(url);
+      let newImage = new Room({
+        imageURL: url,
+        description: imageType
+      })
+      result.push(newImage);
       numbers.push(num);
       quantity--;
     }
   }
   return result
 };
-/*------------- HELPER FUNCTIONS------------- */
+/*------------- END OF HELPER FUNCTIONS------------- */
 
 let adjectives = ['Big', 'Beautiful', 'Comfortable', 'Cosy', 'Huge', 'Small', 'Homely'];
 
 let cities = ['Los Angeles', 'San Diego', 'San Jose', 'San Francisco', 'Fresno', 'Sacramento', 'Long Beach', 'Oakland', 'Bakersfield', 'Anaheim', 'Santa Ana', 'Riverside', 'Stockton', 'Irvine'];
 
-//Description - adjective + city name + home
+//adjective + city name + home
 function createDescription() {
   let adj = adjectives[randomizer(0, adjectives.length - 1)];
   let city = cities[randomizer(0, cities.length - 1)];
   return `${adj} ${city} Home`
 }
 //star rating
-//create a rating between 3-5 with 2 decimal points
 function createStarRating() {
   return randomizer(3, 5, false)
 }
@@ -59,7 +66,7 @@ function isSuperhost() {
   return (randomizer(0, 2) ? true : false)
 };
 //city, state, united states
-//which ever city is chosen in description + CA, United States
+//description + CA, United States
 function createLocation(desc) {
   //middle value is the city
   let splitCity = desc.split(' ');
@@ -74,7 +81,7 @@ function createLocation(desc) {
 //rooms 0 - 14  https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-rooms/room11.jpeg
 
 function createImageCollection() {
-  let images = {};
+  let images = new Images();
   //1 house
   images.house = `https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-houses/house${randomizer(0, 8)}.jpeg`;
   //1 backyard
@@ -83,10 +90,10 @@ function createImageCollection() {
   images.kitchen = `https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-kitchens/kitchen${randomizer(0, 4)}.jpeg`;
   //bedrooms between 2- 5
   let numberOfBedrooms = randomizer(2, 5);
-  images.bedrooms = createArrayOfImgs(numberOfBedrooms, 'bedrooms');
+  images.bedrooms = createArrayOfImgs(numberOfBedrooms, 'bedroom');
   // images.bedrooms 2-5
   let numberOfBathrooms = randomizer(2, 5);
-  images.bathrooms = createArrayOfImgs(numberOfBathrooms, 'bathrooms');
+  images.bathrooms = createArrayOfImgs(numberOfBathrooms, 'bathroom');
   return images
 };
 

@@ -7,16 +7,15 @@ import Button from './Header/Button.jsx';
 
 import styles from './Header.scss';
 
-export default () => {
-  const [data, setData] = useState({});
+export default ({ description, starRating, totalReviews, location }) => {
 
   return (
     <div className={styles.header}>
-      <Description description="Laguna Beach Home" />
+      <Description description={description} />
       <div className={styles.owner} >
         <div className={styles.text}>
-          <Rating starRating="4.95" totalReviews="69" />
-          <Location location="Laguna Beach, CA United States" />
+          <Rating starRating={starRating} totalReviews={totalReviews} />
+          <Location location={location} />
         </div>
         <div className={styles.buttons}>
           <Button buttonName="Share" />

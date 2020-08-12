@@ -1,23 +1,31 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const PORT = 3000;
+const PORT = 3005;
 
 //import database
 const db = require('../db/index');
+//import query models
+let dbQueries = require('./models/properties');
 
-app.use(express.json());
 //send static files inside the public folder
-// app.use(express.static(path.join(__dirname, 'public')));
-let propertyQueries = require('./models/properties');
-app.get('/properties', (req, res) => {
-  propertyQueries.getProperties((err, documents) => {
+app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.json());
+
+app.get('/properties/:id', (req, res) => {
+  let id = req.params.id;
+  dbQueries.getProperties(id, (err, data) => {
     if (err) {
       res.status(400).send('error');
     } else {
-      res.status(200).send(documents);
+      console.log('success')
+      res.status(200).send(data);
     }
   });
+});
+
+app.get('/hi', (req, res) => {
+  res.send('hello world')
 });
 
 app.listen(PORT, () => {

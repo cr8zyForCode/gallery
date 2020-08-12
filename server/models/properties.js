@@ -1,12 +1,11 @@
-let Property = require('../../db/models/Property');
+let { Property } = require('../../db/models/Property');
 
-const getProperties = (callback) => {
-  Property.find({}, (err, docs) => {
+const getProperties = (_id, callback) => {
+  Property.find({ _id: _id }, (err, document) => {
     if (err) {
       console.log('err', err);
     } else {
-      console.log(docs);
-      callback(null, docs);
+      callback(null, document);
     }
   });
 };
