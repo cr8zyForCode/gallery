@@ -7,6 +7,7 @@ let imagesSchema = new Schema({
 });
 
 let propertySchema = new Schema({
+  _id: Number,
   description: String,
   starRating: Number,
   reviewTotal: Number,

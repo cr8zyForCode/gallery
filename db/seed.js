@@ -15,9 +15,10 @@ db.once('open', function () {
 });
 
 // create 20 homes
-for (let i = 0; i < 20; i++) {
+for (let i = 0; i < 100; i++) {
   let uniqueDescription = data.createDescription();
   let newPropertyObj = {
+    _id: i,
     description: uniqueDescription,
     starRating: data.createStarRating(),
     reviewTotal: data.createTotalReviews(),
