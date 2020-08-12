@@ -47,7 +47,10 @@ export default () => {
           <Image image={images.backyard} w="270" h="150" />
           <Image image={images.kitchen} w="270" h="150" />
           <Image image={image4.imageURL} w="270" h="150" />
-          <Image image={image5.imageURL} w="270" h="150" />
+          <div className={styles['image-button']}>
+            <Image image={image5.imageURL} w="270" h="150" />
+            <button className={styles.button}>Show all photos</button>
+          </div>
         </div>
       </div>
     </div >

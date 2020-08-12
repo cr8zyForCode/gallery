@@ -13,3 +13,21 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.image-button {
+  position: relative;
+}
+
+.button {
+  position: absolute;
+  cursor: pointer;
+  top: 110px;
+  left: 130px;
+  padding-top: 7px !important;
+  padding-bottom: 7px !important;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  border-radius: 8px;
+  text-decoration: none;
+  outline: none;
+}
