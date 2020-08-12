@@ -27,8 +27,8 @@ export default () => {
         setSuperhost(house.data[0].superhost);
         setLocation(house.data[0].location);
         setImages(house.data[0].images);
-        setImage4(house.data[0].images.bedrooms[0].imageURL);
-        setImage5(house.data[0].images.bathrooms[0].imageURL);
+        setImage4(house.data[0].images.bedrooms[0]);
+        setImage5(house.data[0].images.bathrooms[0]);
         // setHome(house.data[0]);
       })
       .catch(console.log)
@@ -38,8 +38,6 @@ export default () => {
     getHouse()
   }, []);
 
-  let imageUrl = "https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-backyard/backyard1.jpeg";
-
   return (
     <div className={styles.app}>
       <Header description={description} starRating={starRating} totalReviews={reviewTotal} location={location} />
@@ -48,8 +46,8 @@ export default () => {
         <div className={styles.small}>
           <Image image={images.backyard} w="270" h="150" />
           <Image image={images.kitchen} w="270" h="150" />
-          <Image image={image4} w="270" h="150" />
-          <Image image={image5} w="270" h="150" />
+          <Image image={image4.imageURL} w="270" h="150" />
+          <Image image={image5.imageURL} w="270" h="150" />
         </div>
       </div>
     </div >
