@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import styles from './Button.scss';
 
-export default ({ buttonName, buttonIcon }) => {
+export default ({ buttonName, isLabeled = true }) => {
   let [background, setBackground] = useState(styles.container);
   let [heartColor, setHearColor] = useState(styles.save);
 
@@ -31,7 +31,7 @@ export default ({ buttonName, buttonIcon }) => {
   return (
     <div onMouseEnter={onMouseEnterHandler} onMouseLeave={onMouseLeaveHandler} className={background} onClick={clickHandler}>
       {(buttonName === 'Save') ? saveIcon : shareIcon}
-      <p className={styles.buttonName}>{buttonName}</p>
+      <p className={styles.buttonName}>{(isLabeled) ? buttonName : null}</p>
     </div>
   )
 }

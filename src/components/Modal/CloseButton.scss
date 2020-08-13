@@ -1,0 +1,22 @@
+.container {
+  cursor: pointer;
+  display: flex;
+  text-align: center;
+  border: 1px solid black;
+  width: 30px;
+}
+
+.svg {
+  height: 18px;
+  width: 18px;
+}
+
+.icon {
+  border: 0;
+  // margin-right: 10px;
+}
+
+.text {
+  font-size: 14px;
+  font-weight: 600;
+}

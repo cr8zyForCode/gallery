@@ -1,0 +1,43 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+
+.header {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  padding-top: 200px;
+}
+
+.buttons {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.display {
+  flex: 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 5%;
+}
+
+.p {
+  flex: 5;
+  font-size: 18px;
+  padding-top: 7px;
+}
+
+.img {
+  height: 80%;
+  width: 80%;
+  object-fit: cover;
+
+}

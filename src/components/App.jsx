@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import Header from './Header.jsx';
 import Image from './Image.jsx';
+import Modal from './Modal.jsx';
 
 import styles from './App.scss';
 
@@ -53,6 +54,7 @@ export default () => {
           </div>
         </div>
       </div>
+      <Modal imgNumber={4} totalImages={20} />
     </div >
   )
 }
