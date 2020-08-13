@@ -4,6 +4,7 @@ import axios from 'axios';
 import Header from './Header.jsx';
 import Image from './Image.jsx';
 import Modal from './Modal.jsx';
+import Button from './Button.jsx'
 
 import styles from './App.scss';
 
@@ -24,6 +25,10 @@ export default () => {
         setLoading(false);
       })
       .catch(console.log)
+  };
+
+  let showImages = () => {
+    setIsShowingAllImages(true);
   }
 
   useEffect(() => {
@@ -44,7 +49,7 @@ export default () => {
           <Image image={images.bedrooms[0].imageURL} w="270" h="150" />
           <div className={styles['image-button']}>
             <Image image={images.bathrooms[0].imageURL} w="270" h="150" />
-            <button className={styles.button}>Show all photos</button>
+            <Button showImages={showImages} />
           </div>
         </div>
       </div>
