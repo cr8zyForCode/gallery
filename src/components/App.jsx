@@ -13,7 +13,7 @@ export default () => {
   const [images, setImages] = useState({});
   const [home, setHome] = useState({});
   const [isLoading, setLoading] = useState(true);
-  const [isShowingAllImages, setIsShowingAllImages] = useState(false);
+  const [isModalShowing, setModal] = useState(false);
 
   let getHouse = () => {
     let id = Math.floor(Math.random() * 20);
@@ -28,8 +28,12 @@ export default () => {
   };
 
   let showImages = () => {
-    setIsShowingAllImages(true);
-  }
+    if (isModalShowing) {
+      setModal(false);
+    } else {
+      setModal(true);
+    }
+  };
 
   useEffect(() => {
     getHouse()
@@ -38,22 +42,29 @@ export default () => {
   if (isLoading) {
     return (<div>...</div>)
   }
-  return (
-    <div className={styles.app}>
-      <Header description={home.description} starRating={home.starRating} totalReviews={home.reviewTotal} location={home.location} />
-      <div className={styles.images}>
-        <Image image={images.house} w="560" h="310" size='large' />
-        <div className={styles.small}>
-          <Image image={images.backyard} w="270" h="150" />
-          <Image image={images.kitchen} w="270" h="150" />
-          <Image image={images.bedrooms[0].imageURL} w="270" h="150" />
-          <div className={styles['image-button']}>
-            <Image image={images.bathrooms[0].imageURL} w="270" h="150" />
-            <Button showImages={showImages} />
+
+  if (!isModalShowing) {
+    return (
+      <div className={styles.app}>
+        <Header description={home.description} starRating={home.starRating} totalReviews={home.reviewTotal} location={home.location} />
+        <div className={styles.images}>
+          <Image image={images.house} w="560" h="310" size='large' />
+          <div className={styles.small}>
+            <Image image={images.backyard} w="270" h="150" />
+            <Image image={images.kitchen} w="270" h="150" />
+            <Image image={images.bedrooms[0].imageURL} w="270" h="150" />
+            <div className={styles['image-button']}>
+              <Image image={images.bathrooms[0].imageURL} w="270" h="150" />
+              <Button showImages={showImages} />
+            </div>
           </div>
         </div>
-      </div>
-      {isShowingAllImages ? (<Modal imgNumber={4} totalImages={20} />) : null}
-    </div >
-  )
+      </div >
+    )
+
+  } else {
+    return (
+      <Modal imgNumber={4} totalImages={20} showImages={showImages} />
+    )
+  }
 }

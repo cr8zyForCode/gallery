@@ -7,11 +7,17 @@ import ScrollButton from './Modal/ScrollButton.jsx';
 
 import styles from './Modal.scss';
 
-export default ({ imgNumber, totalImages }) => {
+export default ({ imgNumber, totalImages, showImages }) => {
+
+  let clickHanlder = () => {
+    console.log('ive been clicked')
+    showImages()
+  }
+
   return (
     <div className={styles.modal}>
       <div className={styles.header}>
-        <CloseButton />
+        <CloseButton showImages={showImages} />
         <p className={styles.p}>{`${imgNumber}/${totalImages}`}</p>
         <div className={styles.buttons}>
           <ShareLikeButton buttonName={"Share"} isLabeled={false} />
