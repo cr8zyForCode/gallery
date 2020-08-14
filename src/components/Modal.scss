@@ -1,7 +1,7 @@
 .modal {
   display: grid;
   height: 100vh;
-  grid-template: 80px 1fr / auto;
+  grid-template: 100px 1fr / auto;
 }
 
 .header {
@@ -13,7 +13,7 @@
 
 .p {
   width: 85%;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .buttons {
@@ -39,5 +39,9 @@
 }
 
 .other {
-  height: 50px;
+  height: 70px;
+}
+
+.fake {
+  width: 12px;
 }

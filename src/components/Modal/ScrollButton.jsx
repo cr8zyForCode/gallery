@@ -2,9 +2,15 @@ import React, { useState } from 'react';
 
 import styles from './ScrollButton.scss';
 
-export default ({ direction }) => {
-  let onClickHandler = ({ direction }) => {
-    console.log('i have been clicked')
+export default ({ direction, scrollHandler }) => {
+  let onClickHandler = () => {
+    if (direction === 'left') {
+      console.log('scrolling left')
+      scrollHandler(direction);
+    } else {
+      console.log('scrolling right')
+      scrollHandler(direction);
+    }
   }
 
   let directionSign;

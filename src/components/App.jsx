@@ -14,14 +14,36 @@ export default () => {
   const [home, setHome] = useState({});
   const [isLoading, setLoading] = useState(true);
   const [isModalShowing, setModal] = useState(false);
+  const [allImages, setAllImages] = useState([]);
 
   let getHouse = () => {
     let id = Math.floor(Math.random() * 20);
     axios.get(`/properties/${id}`)
       .then((house) => {
-        setSuperhost(house.data[0].superhost);
-        setImages(house.data[0].images);
-        setHome(house.data[0]);
+        let houseInfo = house.data[0];
+        setSuperhost(houseInfo.superhost);
+        setImages(houseInfo.images);
+        setHome(houseInfo);
+        let kitchenObj = {
+          imageURL: houseInfo.images.kitchen,
+          description: 'kitchen'
+        };
+        let backyardObj = {
+          imageURL: houseInfo.images.backyard,
+          description: 'kitchen'
+        };
+        let houseObj = {
+          imageURL: houseInfo.images.house,
+          description: 'kitchen'
+        };
+        let arrayImages = [
+          houseObj,
+          backyardObj,
+          kitchenObj,
+          ...houseInfo.images.bedrooms,
+          ...houseInfo.images.bathrooms,
+        ];
+        setAllImages(arrayImages);
         setLoading(false);
       })
       .catch(console.log)
@@ -61,10 +83,10 @@ export default () => {
         </div>
       </div >
     )
-
   } else {
+    console.log(allImages, 'this is inside of app')
     return (
-      <Modal imgNumber={4} totalImages={20} showImages={showImages} images={images} />
+      <Modal showImages={showImages} allImages={allImages} />
     )
   }
 }
