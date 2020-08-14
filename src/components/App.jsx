@@ -5,9 +5,10 @@ import Header from './Header.jsx';
 import Image from './Image.jsx';
 import Modal from './Modal.jsx';
 import Button from './Button.jsx'
+import NavBar from './NavBar.jsx'
 
 import styles from './App.scss';
-
+//hellodadad/sdadasdasdasaddasd
 export default () => {
   const [superhost, setSuperhost] = useState('');
   const [images, setImages] = useState({});
@@ -65,28 +66,33 @@ export default () => {
     return (<div>...</div>)
   }
 
-  if (!isModalShowing) {
-    return (
-      <div className={styles.app}>
-        <Header description={home.description} starRating={home.starRating} totalReviews={home.reviewTotal} location={home.location} />
-        <div className={styles.images}>
-          <Image image={images.house} w="560" h="310" size='large' />
-          <div className={styles.small}>
-            <Image image={images.backyard} w="270" h="150" />
-            <Image image={images.kitchen} w="270" h="150" />
-            <Image image={images.bedrooms[0].imageURL} w="270" h="150" />
-            <div className={styles['image-button']}>
-              <Image image={images.bathrooms[0].imageURL} w="270" h="150" />
-              <Button showImages={showImages} />
-            </div>
-          </div>
-        </div>
-      </div >
-    )
-  } else {
-    console.log(allImages, 'this is inside of app')
-    return (
-      <Modal showImages={showImages} allImages={allImages} />
-    )
-  }
+  // if (!isModalShowing) {
+  //   return (
+  //     <div className={styles.app}>
+  //       <Header description={home.description} starRating={home.starRating} totalReviews={home.reviewTotal} location={home.location} />
+  //       <div className={styles.images}>
+  //         <Image image={images.house} w="560" h="310" size='large' />
+  //         <div className={styles.small}>
+  //           <Image image={images.backyard} w="270" h="150" />
+  //           <Image image={images.kitchen} w="270" h="150" />
+  //           <Image image={images.bedrooms[0].imageURL} w="270" h="150" />
+  //           <div className={styles['image-button']}>
+  //             <Image image={images.bathrooms[0].imageURL} w="270" h="150" />
+  //             <Button showImages={showImages} />
+  //           </div>
+  //         </div>
+  //       </div>
+  //     </div >
+  //   )
+  // } else {
+  //   console.log(allImages, 'this is inside of app')
+  //   return (
+  //     <Modal showImages={showImages} allImages={allImages} />
+  //   )
+  // }
+  return (
+    <div>
+      <NavBar />
+    </div>
+  )
 }
