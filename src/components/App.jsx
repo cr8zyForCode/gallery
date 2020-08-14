@@ -64,7 +64,7 @@ export default () => {
 
   } else {
     return (
-      <Modal imgNumber={4} totalImages={20} showImages={showImages} />
+      <Modal imgNumber={4} totalImages={20} showImages={showImages} images={images} />
     )
   }
 }

@@ -7,7 +7,8 @@ import ScrollButton from './Modal/ScrollButton.jsx';
 
 import styles from './Modal.scss';
 
-export default ({ imgNumber, totalImages, showImages }) => {
+export default ({ imgNumber, totalImages, showImages, images }) => {
+  //get all the images
 
   let clickHanlder = () => {
     console.log('ive been clicked')
@@ -26,10 +27,15 @@ export default ({ imgNumber, totalImages, showImages }) => {
       </div>
       <div className={styles.display}>
         <ScrollButton direction="left" />
-        <img src={`https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-rooms/room1.jpeg`} className={styles.img}></img>
+        <div className={styles.imgContainer}>
+          <img src={images.backyard} className={styles.img} height='510'></img>
+        </div>
         <ScrollButton direction="right" />
       </div >
+      <div className={styles.other}>
+
+      </div>
     </div>
   )
-}
+};
 

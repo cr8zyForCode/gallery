@@ -1,43 +1,43 @@
 .modal {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   height: 100vh;
-  width: 100%;
+  grid-template: 80px 1fr / auto;
 }
 
 .header {
-  flex: 1;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.p {
+  width: 85%;
+  font-size: 18px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  padding: 3px;
+  border-radius: 10px;
+}
+
+.display {
   display: flex;
   justify-content: space-around;
   align-items: center;
   text-align: center;
-  padding-top: 200px;
 }
 
-.buttons {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.display {
-  flex: 5;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  padding-bottom: 5%;
-}
-
-.p {
-  flex: 5;
-  font-size: 18px;
-  padding-top: 7px;
+.imgContainer {
+  width: 70%;
 }
 
 .img {
-  height: 80%;
-  width: 80%;
   object-fit: cover;
+}
 
+.other {
+  height: 50px;
 }
