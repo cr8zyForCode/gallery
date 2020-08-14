@@ -14,6 +14,7 @@ export default ({ description, starRating, totalReviews, location }) => {
       <Description description={description} />
       <div className={styles.owner} >
         <div className={styles.text}>
+          <ion-icon name="star"></ion-icon>
           <Rating starRating={starRating} totalReviews={totalReviews} />
           <Location location={location} />
         </div>
