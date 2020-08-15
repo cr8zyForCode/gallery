@@ -10,7 +10,7 @@ import styles from './Header.scss';
 export default ({ description, starRating, totalReviews, location }) => {
 
   return (
-    <div className={styles.header}>
+    <div className={styles.container}>
       <Description description={description} />
       <div className={styles.owner} >
         <div className={styles.text}>

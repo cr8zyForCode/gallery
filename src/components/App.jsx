@@ -2,24 +2,20 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import Header from './Header.jsx';
-import Image from './Image.jsx';
 import Modal from './Modal.jsx';
-import Button from './Button.jsx'
 import NavBar from './NavBar.jsx'
+import Images from './Images.jsx'
 
 import styles from './App.scss';
-//hellodadad/sdadasdasdasaddasd
+
 export default () => {
   const [superhost, setSuperhost] = useState('');
-  const [images, setImages] = useState({});
   const [home, setHome] = useState({});
   const [isLoading, setLoading] = useState(true);
-  const [isModalShowing, setModal] = useState(false);
   const [allImages, setAllImages] = useState([]);
 
-  const [modalStyling, setModalStyling] = useState(styles.hidden);
-
-  const [timer, setTimer] = useState(0);
+  const [isModalShowing, setModalShowing] = useState(false);
+  const [modal, setModal] = useState(styles.hidden);
 
   let getHouse = () => {
     let id = Math.floor(Math.random() * 20);
@@ -27,7 +23,6 @@ export default () => {
       .then((house) => {
         let houseInfo = house.data[0];
         setSuperhost(houseInfo.superhost);
-        setImages(houseInfo.images);
         setHome(houseInfo);
         let kitchenObj = {
           imageURL: houseInfo.images.kitchen,
@@ -54,13 +49,13 @@ export default () => {
       .catch(console.log)
   };
 
-  let showImages = () => {
+  let showAllImages = () => {
     if (isModalShowing) {
-      setModalStyling(styles.hidden)
-      setModal(false);
+      setModal(styles.hidden)
+      setModalShowing(false);
     } else {
-      setModal(true);
-      setModalStyling(styles.show)
+      setModalShowing(true);
+      setModal(styles.show)
     }
   };
 
@@ -71,30 +66,23 @@ export default () => {
   if (isLoading) {
     return (<div>...</div>)
   }
-  //document.body.style
-  return (
-    <div className={styles.app}>
 
-      <div className={styles.largeContainer}>
-        <NavBar />
+  /* <div className={modalStyling}>
+  <Modal showImages={showImages} allImages={allImages} />
+</div> */
+  // </div >
+
+  return (
+    <div className={styles.container}>
+
+      <NavBar />
+      <div className={styles.content}>
         <Header description={home.description} starRating={home.starRating} totalReviews={home.reviewTotal} location={home.location} />
-        <div className={styles.images}>
-          <Image image={images.house} w="560" h="310" size='large' />
-          <div className={styles.small}>
-            <Image image={images.backyard} w="270" h="150" />
-            <Image image={images.kitchen} w="270" h="150" />
-            <Image image={images.bedrooms[0].imageURL} w="270" h="150" />
-            <div className={styles['image-button']}>
-              <Image image={images.bathrooms[0].imageURL} w="270" h="150" />
-              <Button showImages={showImages} />
-            </div>
-          </div>
-        </div>
+        <Images images={allImages} showAllImages={showAllImages} />
       </div>
-      {}
-      <div className={modalStyling}>
-        <Modal showImages={showImages} allImages={allImages} />
+      <div className={modal}>
+        <Modal showAllImages={showAllImages} allImages={allImages} />
       </div>
-    </div >
+    </div>
   )
 }

@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  padding: 3px 6px;
+  background-color: inherit;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropdown {
+  display: block;
+  width: 9px;
+  height: 6;
+  fill: none;
+  margin-left: 2px;
+  margin-right: 6px;
+  background-color: inherit;
+}
+
+.world{
+  display: block;
+  height: 16px;
+  width: 16px;
+  fill: currentcolor;
+  background-color: inherit;
+}

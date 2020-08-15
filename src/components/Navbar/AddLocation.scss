@@ -1,0 +1,23 @@
+.container {
+  padding: 5px 10px 5px 10px;
+  border-radius: 10px;
+  display: flex;
+  background-color: #ffffff;
+  justify-content: center;
+}
+
+.icon {
+  display: block;
+  fill: none;
+  height: 16px;
+  width: 16px;
+  stroke: currentcolor;
+  stroke-width: 4;
+  overflow: visible;
+  background-color: inherit;
+
+}
+
+.text {
+  background-color: inherit;
+}

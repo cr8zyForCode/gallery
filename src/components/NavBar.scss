@@ -1,6 +1,24 @@
 .container {
   display: flex;
-  // grid-template-columns: 30px 4fr 40px;
   justify-content: space-between;
-  border-bottom: 1px solid black;
+  align-items: center;
+  border-bottom: 1px solid 	#B0B0B0;
+  height: 60px;
+  background-color: #ffffff;
+  width: 100%;
+}
+
+.location {
+  flex: 8;
+  padding-right: 60px;
+}
+
+.logo {
+  flex: 1;
+}
+
+.buttonContainer {
+  flex: 2;
+  display: flex;
+  padding-left: 4px;
 }

@@ -1,11 +1,11 @@
 import React from 'react';
 
-import styles from './Button.scss';
+import styles from './PhotoBtn.scss';
 
-export default ({ showImages }) => {
+export default ({ showAllImages }) => {
   let clickHanlder = () => {
-    console.log('ive been clicked')
-    showImages()
+    console.log('Clicked PhotoBtn')
+    showAllImages()
   }
   return (
     <button className={styles.button} onClick={clickHanlder}>Show all photos</button>

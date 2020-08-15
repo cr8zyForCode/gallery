@@ -1,22 +1,14 @@
-.app {
-  margin-left: 5%;
-  margin-right: 5%;
-  height: 100vh;
+.container {
+  display: grid;
+  grid-template: 60px auto / auto;
+  row-gap: 10px;
   overflow: hidden;
 }
 
-.images {
-  padding-top: 10px;
+.content {
   display: flex;
-}
-
-.small {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.image-button {
-  position: relative;
+  margin: 10px;
+  flex-direction: column;
 }
 
 @keyframes slideup {
@@ -38,28 +30,24 @@
 }
 
 .hidden {
-  animation: slidedown 1.0s ease;
-  // position: absolute;
-  // top: 0;
-  // width: 100vw;
+  // animation: slidedown 1.0s ease;
+  position: absolute;
+  top: 0;
   z-index: 1;
   // position: absolute;
   // top: 0;
+  display: none;
   // left: 0;
-  width: 99vw;
-  height: 100vh;
+  // width: 99vw;
+  // height: 100vh;
 }
 
 .show {
-  animation: slideup 1.0s ease;
+  animation: slideup 0.5s ease;
   z-index: 1;
   position: absolute;
   top: 0;
   left: 0;
-  width: 99vw;
-  height: 100vh;
-}
-
-.largeContainer {
+  width: 100vw;
   height: 100vh;
 }

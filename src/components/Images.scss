@@ -1,0 +1,22 @@
+.container {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.largeImage {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.smallImages {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.btnContainer {
+  position: relative;
+}

@@ -7,13 +7,13 @@ import ScrollButton from './Modal/ScrollButton.jsx';
 
 import styles from './Modal.scss';
 
-export default ({ showImages, allImages }) => {
+export default ({ showAllImages, allImages }) => {
   const [currentImage, setCurrentImage] = useState(allImages);
   const [currentImageNum, setCurrentImageNum] = useState(0);
 
   let clickHanlder = () => {
     console.log('ive been clicked')
-    showImages()
+    showAllImages()
   }
 
   let scrollHandler = (direction) => {
@@ -27,7 +27,7 @@ export default ({ showImages, allImages }) => {
   return (
     <div className={styles.modal}>
       <div className={styles.header}>
-        <CloseButton showImages={showImages} />
+        <CloseButton showAllImages={showAllImages} />
         <p className={styles.p}>{`${currentImageNum + 1} / ${allImages.length}`}</p>
         <div className={styles.buttons}>
           <ShareLikeButton buttonName={"Share"} isLabeled={false} />

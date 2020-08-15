@@ -1,8 +1,10 @@
 $colour: red;
 
-.header {
+.container {
   display: flex;
   flex-direction: column;
+  padding-left: 7%;
+  padding-right: 7%;
 }
 
 .owner {
