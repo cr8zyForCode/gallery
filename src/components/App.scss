@@ -1,7 +1,8 @@
 .app {
   margin-left: 5%;
   margin-right: 5%;
-  margin-top: 30px;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .images {
@@ -16,4 +17,49 @@
 
 .image-button {
   position: relative;
+}
+
+@keyframes slideup {
+  0%{
+    transform: translateY(100%);
+  }
+  100%{
+    transform: translateY(0%);
+  }
+}
+
+@keyframes slidedown {
+  0%{
+    transform: translateY(0%);
+  }
+  100%{
+    transform: translateY(100%);
+  }
+}
+
+.hidden {
+  animation: slidedown 1.0s ease;
+  // position: absolute;
+  // top: 0;
+  // width: 100vw;
+  z-index: 1;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  width: 99vw;
+  height: 100vh;
+}
+
+.show {
+  animation: slideup 1.0s ease;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 99vw;
+  height: 100vh;
+}
+
+.largeContainer {
+  height: 100vh;
 }

@@ -17,6 +17,10 @@ export default () => {
   const [isModalShowing, setModal] = useState(false);
   const [allImages, setAllImages] = useState([]);
 
+  const [modalStyling, setModalStyling] = useState(styles.hidden);
+
+  const [timer, setTimer] = useState(0);
+
   let getHouse = () => {
     let id = Math.floor(Math.random() * 20);
     axios.get(`/properties/${id}`)
@@ -52,9 +56,11 @@ export default () => {
 
   let showImages = () => {
     if (isModalShowing) {
+      setModalStyling(styles.hidden)
       setModal(false);
     } else {
       setModal(true);
+      setModalStyling(styles.show)
     }
   };
 
@@ -65,34 +71,30 @@ export default () => {
   if (isLoading) {
     return (<div>...</div>)
   }
-
-  // if (!isModalShowing) {
-  //   return (
-  //     <div className={styles.app}>
-  //       <Header description={home.description} starRating={home.starRating} totalReviews={home.reviewTotal} location={home.location} />
-  //       <div className={styles.images}>
-  //         <Image image={images.house} w="560" h="310" size='large' />
-  //         <div className={styles.small}>
-  //           <Image image={images.backyard} w="270" h="150" />
-  //           <Image image={images.kitchen} w="270" h="150" />
-  //           <Image image={images.bedrooms[0].imageURL} w="270" h="150" />
-  //           <div className={styles['image-button']}>
-  //             <Image image={images.bathrooms[0].imageURL} w="270" h="150" />
-  //             <Button showImages={showImages} />
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </div >
-  //   )
-  // } else {
-  //   console.log(allImages, 'this is inside of app')
-  //   return (
-  //     <Modal showImages={showImages} allImages={allImages} />
-  //   )
-  // }
+  //document.body.style
   return (
-    <div>
-      <NavBar />
-    </div>
+    <div className={styles.app}>
+
+      <div className={styles.largeContainer}>
+        <NavBar />
+        <Header description={home.description} starRating={home.starRating} totalReviews={home.reviewTotal} location={home.location} />
+        <div className={styles.images}>
+          <Image image={images.house} w="560" h="310" size='large' />
+          <div className={styles.small}>
+            <Image image={images.backyard} w="270" h="150" />
+            <Image image={images.kitchen} w="270" h="150" />
+            <Image image={images.bedrooms[0].imageURL} w="270" h="150" />
+            <div className={styles['image-button']}>
+              <Image image={images.bathrooms[0].imageURL} w="270" h="150" />
+              <Button showImages={showImages} />
+            </div>
+          </div>
+        </div>
+      </div>
+      {}
+      <div className={modalStyling}>
+        <Modal showImages={showImages} allImages={allImages} />
+      </div>
+    </div >
   )
 }
