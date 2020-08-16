@@ -1,8 +1,8 @@
 .container {
-  margin-top: 5px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  padding-left: 7%;
+  padding-right: 7%;
 }
 
 .largeImage {
@@ -12,11 +12,12 @@
 }
 
 .smallImages {
-  flex: 1;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 10px;
+  height: 350;
 }
-
-.btnContainer {
-  position: relative;
-}
+// .btnContainer {
+//   position: relative;
+// }

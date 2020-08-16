@@ -1,8 +1,9 @@
 import React from 'react';
 
 import styles from './Image.scss';
+import PhotoBtn from './PhotoBtn.jsx';
 
-export default ({ image, w, h, size = 'small', roundCorner }) => {
+export default ({ image, w, h, type, showAllImages }) => {
   let onMouseLeaveHandler = (e) => {
     e.target.style.filter = 'none'
   }
@@ -12,9 +13,11 @@ export default ({ image, w, h, size = 'small', roundCorner }) => {
     e.target.style.transition = '.5s';
   }
 
-  return (roundCorner === 'sharp')
-    ? (<img src={image} className={styles[roundCorner]} width={w} height={h} onMouseEnter={onMouseEnterHandler} onMouseLeave={onMouseLeaveHandler}>
-    </img>)
-    : (<img src={image} className={styles[size]} width={w} height={h} onMouseEnter={onMouseEnterHandler} onMouseLeave={onMouseLeaveHandler}>
-    </img>)
+  return (
+    <div className={styles.btnContainer}>
+      <img src={image} className={styles[type]} width={w} height={h} onMouseEnter={onMouseEnterHandler} onMouseLeave={onMouseLeaveHandler}>
+      </img>
+      {!(type === 'bottomRight') ? null : <PhotoBtn showAllImages={showAllImages} />}
+    </div>
+  )
 };

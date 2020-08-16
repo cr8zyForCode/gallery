@@ -51,35 +51,28 @@ export default () => {
 
   let showAllImages = () => {
     if (isModalShowing) {
-      setModal(styles.hidden)
+      setModal(styles.hidden);
       setModalShowing(false);
     } else {
       setModalShowing(true);
-      setModal(styles.show)
+      setModal(styles.show);
     }
   };
 
   useEffect(() => {
     getHouse()
   }, []);
-
+  //helloasdsdasdasdasd
   if (isLoading) {
     return (<div>...</div>)
   }
-
-  /* <div className={modalStyling}>
-  <Modal showImages={showImages} allImages={allImages} />
-</div> */
-  // </div >
-
   return (
     <div className={styles.container}>
-
       <NavBar />
-      <div className={styles.content}>
-        <Header description={home.description} starRating={home.starRating} totalReviews={home.reviewTotal} location={home.location} />
-        <Images images={allImages} showAllImages={showAllImages} />
-      </div>
+      {/* <div className={styles.content}> */}
+      <Header description={home.description} starRating={home.starRating} totalReviews={home.reviewTotal} location={home.location} />
+      <Images images={allImages} showAllImages={showAllImages} />
+      {/* </div> */}
       <div className={modal}>
         <Modal showAllImages={showAllImages} allImages={allImages} />
       </div>

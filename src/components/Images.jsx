@@ -10,20 +10,19 @@ import styles from './Images.scss';
 export default ({ images, showAllImages }) => {
   return (
     <div className={styles.container}>
-      <div className={styles.largeImage}>
-        <LargeImage image={images[0].imageURL} w="560" h="311" roundCorner="round" size='large' />
+      <LargeImage image={images[0].imageURL} w="520" h="350" type="large" />
+
+      <div className={styles.smallImages}>
+        <SmallImage image={images[1].imageURL} type="center" w="260" h="170" />
+        <SmallImage image={images[2].imageURL} type="center" w="260" h="170" />
       </div>
 
       <div className={styles.smallImages}>
-        <SmallImage image={images[1].imageURL} roundCorner="sharp" w="270" h="149" />
-        <SmallImage image={images[2].imageURL} roundCorner="round" w="270" h="149" />
-        <SmallImage image={images[3].imageURL} roundCorner="sharp" w="270" h="149" />
-        <div className={styles.btnContainer}>
-          <SmallImage image={images[4].imageURL} roundCorner="round" w="270" h="149" />
-          <PhotoBtn showAllImages={showAllImages} />
-        </div>
-
+        <SmallImage image={images[3].imageURL} type="topRight" w="260" h="170" />
+        <SmallImage image={images[4].imageURL} type="bottomRight" w="260" h="170" showAllImages={showAllImages} />
       </div>
+
     </div>
+    // </div >
   )
 };
