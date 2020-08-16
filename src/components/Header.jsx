@@ -7,7 +7,7 @@ import Button from './Header/Button.jsx';
 
 import styles from './Header.scss';
 
-export default ({ description, starRating, totalReviews, location }) => {
+export default ({ description, starRating, totalReviews, location, shareHandler }) => {
 
   return (
     <div className={styles.container}>
@@ -19,7 +19,7 @@ export default ({ description, starRating, totalReviews, location }) => {
           <Location location={location} />
         </div>
         <div className={styles.buttons}>
-          <Button buttonName="Share" />
+          <Button buttonName="Share" shareHandler={shareHandler} />
           <Button buttonName="Save" />
         </div>
       </div>

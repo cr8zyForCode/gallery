@@ -1,0 +1,29 @@
+%template {
+  display: flex;
+  align-items: center;
+  height: 60px;
+}
+
+.normal{
+  @extend %template;
+  border-bottom: 1px solid black;
+}
+
+.first{
+  @extend %template;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.icon{
+  height: 18px;
+  width: 18px;
+  display: block;
+  fill: rgb(72, 72, 72);
+}
+
+.platform{
+  color: #008489;
+  font-size: 16px;
+  margin-left: 8px;
+}

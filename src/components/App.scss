@@ -1,15 +1,26 @@
 .container {
   display: grid;
-  grid-template: 60px auto auto auto / auto;
+  grid-template: 60px auto auto auto auto/ auto;
   row-gap: 25px;
   overflow: hidden;
 }
 
-// .content {
-//   display: flex;
-//   margin: 10px;
-//   flex-direction: column;
-// }
+.hideShareModal{
+  display: none;
+}
+
+.showShareModal{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.2);
+}
 
 @keyframes slideup {
   0%{

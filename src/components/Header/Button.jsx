@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import styles from './Button.scss';
 
-export default ({ buttonName, isLabeled = true }) => {
+export default ({ buttonName, isLabeled = true, shareHandler }) => {
   let [background, setBackground] = useState(styles.container);
   let [heartColor, setHearColor] = useState(styles.save);
 
@@ -21,6 +21,10 @@ export default ({ buttonName, isLabeled = true }) => {
       } else {
         setHearColor(styles.save)
       }
+    }
+    if (buttonName === 'Share') {
+      console.log('shared button was clicked. from button comp')
+      shareHandler()
     }
   }
 

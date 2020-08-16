@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import Header from './Header.jsx';
-import Modal from './Modal.jsx';
 import NavBar from './NavBar.jsx'
+import Header from './Header.jsx';
 import Images from './Images.jsx'
+import Modal from './Modal.jsx';
+import ShareModal from './ShareModal.jsx';
+
 
 import styles from './App.scss';
 
@@ -16,6 +18,9 @@ export default () => {
 
   const [isModalShowing, setModalShowing] = useState(false);
   const [modal, setModal] = useState(styles.hidden);
+
+  const [shareModal, setShareModal] = useState(styles.hideShareModal);
+  const [isShowingShareModal, setShowingShareModal] = useState(false);
 
   let getHouse = () => {
     let id = Math.floor(Math.random() * 20);
@@ -51,30 +56,40 @@ export default () => {
 
   let showAllImages = () => {
     if (isModalShowing) {
-      setModal(styles.hidden);
       setModalShowing(false);
+      setModal(styles.hidden);
     } else {
       setModalShowing(true);
       setModal(styles.show);
     }
   };
 
+  let shareHandler = () => {
+    if (isShowingShareModal) {
+      setShowingShareModal(false);
+      setShareModal(styles.hideShareModal);
+    } else {
+      setShowingShareModal(true);
+      setShareModal(styles.showShareModal);
+    }
+  };
+
   useEffect(() => {
     getHouse()
   }, []);
-  //helloasdsdasdasdasd
   if (isLoading) {
     return (<div>...</div>)
   }
   return (
     <div className={styles.container}>
       <NavBar />
-      {/* <div className={styles.content}> */}
-      <Header description={home.description} starRating={home.starRating} totalReviews={home.reviewTotal} location={home.location} />
+      <Header description={home.description} starRating={home.starRating} totalReviews={home.reviewTotal} location={home.location} shareHandler={shareHandler} />
       <Images images={allImages} showAllImages={showAllImages} />
-      {/* </div> */}
       <div className={modal}>
-        <Modal showAllImages={showAllImages} allImages={allImages} />
+        <Modal showAllImages={showAllImages} allImages={allImages} shareHandler={shareHandler} />
+      </div>
+      <div className={shareModal}>
+        <ShareModal shareHandler={shareHandler} />
       </div>
     </div>
   )
