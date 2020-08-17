@@ -6,7 +6,6 @@ import Header from './Header.jsx';
 import Images from './Images.jsx'
 import Modal from './Modal.jsx';
 import ShareModal from './ShareModal.jsx';
-
 import styles from './App.scss';
 
 export default () => {
@@ -57,7 +56,6 @@ export default () => {
       setModalShowing(true);
       setModal(styles.show);
     }
-    console.log('num', currentPic)
   };
 
   let shareHandler = () => {

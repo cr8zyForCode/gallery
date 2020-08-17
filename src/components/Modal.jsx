@@ -9,7 +9,7 @@ import styles from './Modal.scss';
 
 export default ({ showAllImages, allImages, shareHandler, currentPic }) => {
   const [currentImage, setCurrentImage] = useState(allImages);
-  const [currentImageNum, setCurrentImageNum] = useState(currentPic);
+  const [currentImageNum, setCurrentImageNum] = useState(0);
 
   let clickHanlder = () => {
     showAllImages()
