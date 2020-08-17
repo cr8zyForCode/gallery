@@ -7,20 +7,20 @@ import Images from './Images.jsx'
 import Modal from './Modal.jsx';
 import ShareModal from './ShareModal.jsx';
 
-
 import styles from './App.scss';
 
 export default () => {
-  const [superhost, setSuperhost] = useState('');
-  const [home, setHome] = useState({});
   const [isLoading, setLoading] = useState(true);
+
+  const [home, setHome] = useState({});
   const [allImages, setAllImages] = useState([]);
+  const [superhost, setSuperhost] = useState('');
 
   const [isModalShowing, setModalShowing] = useState(false);
   const [modal, setModal] = useState(styles.hidden);
 
-  const [shareModal, setShareModal] = useState(styles.hideShareModal);
   const [isShowingShareModal, setShowingShareModal] = useState(false);
+  const [shareModal, setShareModal] = useState(styles.hideShareModal);
 
   let getHouse = () => {
     let id = Math.floor(Math.random() * 20);
@@ -29,22 +29,10 @@ export default () => {
         let houseInfo = house.data[0];
         setSuperhost(houseInfo.superhost);
         setHome(houseInfo);
-        let kitchenObj = {
-          imageURL: houseInfo.images.kitchen,
-          description: 'kitchen'
-        };
-        let backyardObj = {
-          imageURL: houseInfo.images.backyard,
-          description: 'kitchen'
-        };
-        let houseObj = {
-          imageURL: houseInfo.images.house,
-          description: 'kitchen'
-        };
         let arrayImages = [
-          houseObj,
-          backyardObj,
-          kitchenObj,
+          houseInfo.images.house,
+          houseInfo.images.kitchen,
+          houseInfo.images.backyard,
           ...houseInfo.images.bedrooms,
           ...houseInfo.images.bathrooms,
         ];

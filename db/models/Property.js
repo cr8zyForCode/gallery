@@ -1,4 +1,4 @@
-let mongoose = require('mongoose')
+let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
 let roomSchema = new Schema({
@@ -7,9 +7,9 @@ let roomSchema = new Schema({
 });
 
 let allImagesSchema = new Schema({
-  house: String,
-  backyard: String,
-  kitchen: String,
+  house: roomSchema,
+  backyard: roomSchema,
+  kitchen: roomSchema,
   bedrooms: Array,
   bathrooms: Array
 });

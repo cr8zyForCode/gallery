@@ -18,9 +18,7 @@ function createArrayOfImgs(quantity, imageType) {
   let result = [];
   //random numbers storage = []
   let numbers = [];
-  //do a while loop until q = 0
   while (quantity > 0) {
-    //selects if its either a bedroom or restroom
     let num = randomizer(0, max);
 
     if (imageType === 'bedroom') {
@@ -52,11 +50,11 @@ function createDescription() {
   let adj = adjectives[randomizer(0, adjectives.length - 1)];
   let city = cities[randomizer(0, cities.length - 1)];
   return `${adj} ${city} Home`
-}
+};
 //star rating
 function createStarRating() {
   return randomizer(3, 5, false)
-}
+};
 //review total random number between 50-100
 function createTotalReviews() {
   return randomizer(50, 100)
@@ -74,20 +72,23 @@ function createLocation(desc) {
   return `${city}, CA United States`
 }
 
-//backyard 0-5  https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-backyard/backyard0.jpeg
-//bathrooms 0 - 8  https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-bathrooms/bathroom0.jpeg
-//houses 0 - 8 https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-houses/house0.jpeg
-//kitchens 0 - 4 https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-kitchens/kitchen0.jpeg
-//rooms 0 - 14  https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-rooms/room11.jpeg
-
 function createImageCollection() {
   let images = new Images();
-  //1 house
-  images.house = `https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-houses/house${randomizer(0, 8)}.jpeg`;
+
+  images.house = new Room({
+    imageURL: `https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-houses/house${randomizer(0, 8)}.jpeg`,
+    description: 'house'
+  })
   //1 backyard
-  images.backyard = `https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-backyard/backyard${randomizer(0, 5)}.jpeg`;
+  images.backyard = new Room({
+    imageURL: `https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-backyard/backyard${randomizer(0, 5)}.jpeg`,
+    description: 'backyard'
+  });
   //1 kitchen
-  images.kitchen = `https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-kitchens/kitchen${randomizer(0, 4)}.jpeg`;
+  images.kitchen = new Room({
+    imageURL: `https://airbnb-hr-replica.s3-us-west-1.amazonaws.com/fec-data-kitchens/kitchen${randomizer(0, 4)}.jpeg`,
+    description: 'kitchen'
+  });
   //bedrooms between 2- 5
   let numberOfBedrooms = randomizer(2, 5);
   images.bedrooms = createArrayOfImgs(numberOfBedrooms, 'bedroom');
@@ -96,13 +97,6 @@ function createImageCollection() {
   images.bathrooms = createArrayOfImgs(numberOfBathrooms, 'bathroom');
   return images
 };
-
-// console.log(createDescription())
-// console.log(createStarRating())
-// console.log(createTotalReviews())
-// console.log(isSuperhost())
-// console.log(createLocation(createDescription()))
-// console.log(createImageCollection())
 
 exports.createDescription = createDescription;
 exports.createStarRating = createStarRating;
