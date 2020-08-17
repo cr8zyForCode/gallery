@@ -8,22 +8,21 @@ import PhotoBtn from './Images/PhotoBtn.jsx';
 import styles from './Images.scss';
 
 export default ({ images, showAllImages }) => {
-  console.log(images[0]);
+
   return (
     <div className={styles.container}>
-      <LargeImage image={images[0].imageURL} w="520" h="350" type="large" />
+      <LargeImage image={images[0].imageURL} w="520" h="350" type="large" num={0} showAllImages={showAllImages} />
 
       <div className={styles.smallImages}>
-        <SmallImage image={images[1].imageURL} type="center" w="260" h="171" />
-        <SmallImage image={images[2].imageURL} type="center" w="260" h="171" />
+        <SmallImage image={images[1].imageURL} type="center" w="260" h="171" num={1} showAllImages={showAllImages} />
+        <SmallImage image={images[2].imageURL} type="center" w="260" h="171" num={2} showAllImages={showAllImages} />
       </div>
 
       <div className={styles.smallImages}>
-        <SmallImage image={images[4].imageURL} type="topRight" w="260" h="171" />
-        <SmallImage image={images[5].imageURL} type="bottomRight" w="260" h="171" showAllImages={showAllImages} />
+        <SmallImage image={images[3].imageURL} type="topRight" w="260" h="171" num={3} showAllImages={showAllImages} />
+        <SmallImage image={images[4].imageURL} type="bottomRight" w="260" h="171" showAllImages={showAllImages} num={4} />
       </div>
 
     </div>
-    // </div >
   )
 };

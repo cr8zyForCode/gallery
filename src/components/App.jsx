@@ -18,6 +18,7 @@ export default () => {
 
   const [isModalShowing, setModalShowing] = useState(false);
   const [modal, setModal] = useState(styles.hidden);
+  const [currentPic, setCurrentPic] = useState(0);
 
   const [isShowingShareModal, setShowingShareModal] = useState(false);
   const [shareModal, setShareModal] = useState(styles.hideShareModal);
@@ -42,14 +43,21 @@ export default () => {
       .catch(console.log)
   };
 
-  let showAllImages = () => {
+  let showAllImages = (num) => {
+    // if (num !== undefined) {
+    //   console.log('its coming inside of here')
+    //   setCurrentPic(num)
+    // }
+
     if (isModalShowing) {
       setModalShowing(false);
+      // setCurrentPic(0);
       setModal(styles.hidden);
     } else {
       setModalShowing(true);
       setModal(styles.show);
     }
+    console.log('num', currentPic)
   };
 
   let shareHandler = () => {
@@ -61,7 +69,6 @@ export default () => {
       setShareModal(styles.showShareModal);
     }
   };
-
   useEffect(() => {
     getHouse()
   }, []);
@@ -74,7 +81,7 @@ export default () => {
       <Header description={home.description} starRating={home.starRating} totalReviews={home.reviewTotal} location={home.location} shareHandler={shareHandler} />
       <Images images={allImages} showAllImages={showAllImages} />
       <div className={modal}>
-        <Modal showAllImages={showAllImages} allImages={allImages} shareHandler={shareHandler} />
+        <Modal showAllImages={showAllImages} allImages={allImages} shareHandler={shareHandler} currentPic={currentPic} />
       </div>
       <div className={shareModal}>
         <ShareModal shareHandler={shareHandler} />

@@ -7,14 +7,13 @@ import ScrollButton from './Modal/ScrollButton.jsx';
 
 import styles from './Modal.scss';
 
-export default ({ showAllImages, allImages, shareHandler }) => {
+export default ({ showAllImages, allImages, shareHandler, currentPic }) => {
   const [currentImage, setCurrentImage] = useState(allImages);
-  const [currentImageNum, setCurrentImageNum] = useState(0);
+  const [currentImageNum, setCurrentImageNum] = useState(currentPic);
 
   let clickHanlder = () => {
-    console.log('ive been clicked')
     showAllImages()
-  }
+  };
 
   let scrollHandler = (direction) => {
     if (direction === 'left') {
