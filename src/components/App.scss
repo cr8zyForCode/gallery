@@ -1,33 +1,63 @@
-.app {
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-top: 30px;
+.container {
+  display: grid;
+  grid-template: 70px auto auto auto auto/ auto;
+  row-gap: 25px;
+  overflow: hidden;
 }
 
-.images {
-  padding-top: 10px;
+.hideShareModal{
+  display: none;
+}
+
+.showShareModal{
   display: flex;
-}
-
-.small {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.image-button {
-  position: relative;
-}
-
-.button {
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  cursor: pointer;
-  top: 110px;
-  left: 130px;
-  padding-top: 7px !important;
-  padding-bottom: 7px !important;
-  padding-left: 15px !important;
-  padding-right: 15px !important;
-  border-radius: 8px;
-  text-decoration: none;
-  outline: none;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+@keyframes slideup {
+  0%{
+    transform: translateY(100%);
+  }
+  100%{
+    transform: translateY(0%);
+  }
+}
+
+@keyframes slidedown {
+  0%{
+    transform: translateY(0%);
+  }
+  100%{
+    transform: translateY(100%);
+  }
+}
+
+.hidden {
+  // animation: slidedown 1.0s ease;
+  // position: absolute;
+  // top: 0;
+  // z-index: 1;
+  // position: absolute;
+  // top: 0;
+  display: none;
+  // left: 0;
+  // width: 99vw;
+  // height: 100vh;
+}
+.show {
+  animation: slideup 0.5s ease;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
 }

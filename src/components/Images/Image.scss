@@ -1,0 +1,30 @@
+%small-template {
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.large{
+  // margin-top: 10px;
+  border-bottom-left-radius: 12px;
+  border-top-left-radius: 12px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.center {
+  @extend %small-template;
+}
+
+.topRight {
+  @extend %small-template;
+  border-top-right-radius: 12px;
+}
+
+.bottomRight {
+  @extend %small-template;
+  border-bottom-right-radius: 12px;
+}
+
+.btnContainer {
+  position: relative;
+}

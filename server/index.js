@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const PORT = 3005;
+const PORT = 3006;
 
 //import database
 const db = require('../db/index');

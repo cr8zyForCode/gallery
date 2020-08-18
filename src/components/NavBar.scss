@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid 	#B0B0B0;
+  background-color: #ffffff;
+  width: 100%;
+}
+
+.logo {
+  flex: 2;
+  background-color: inherit;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.location {
+  flex: 8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: inherit;
+}
+
+.buttonContainer {
+  flex: 2;
+  display: flex;
+  padding-left: 4px;
+  background-color: inherit;
+}

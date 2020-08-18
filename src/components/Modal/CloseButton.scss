@@ -1,0 +1,23 @@
+.container {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  justify-content: center;
+  padding: 7px 14px 7px 14px;
+  background-color: #f1f1f1
+}
+
+.svg {
+  height: 18px;
+  width: 18px;
+  background-color: inherit;
+
+}
+
+.text {
+  font-size: 14px;
+  padding-left: 4px;
+  background-color: inherit;
+}

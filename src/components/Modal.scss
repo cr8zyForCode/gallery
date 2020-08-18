@@ -1,0 +1,48 @@
+.modal {
+  display: grid;
+  height: 100vh;
+  grid-template: 100px 1fr / auto;
+}
+
+.header {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.p {
+  width: 85%;
+  font-size: 16px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  padding: 3px;
+  border-radius: 10px;
+}
+
+.display {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+}
+
+.imgContainer {
+  width: 70%;
+}
+
+.img {
+  object-fit: cover;
+}
+
+.other {
+  height: 70px;
+}
+
+.fake {
+  width: 12px;
+}

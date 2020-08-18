@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import styles from './Button.scss';
 
-export default ({ buttonName, buttonIcon }) => {
+export default ({ buttonName, isLabeled = true, shareHandler }) => {
   let [background, setBackground] = useState(styles.container);
   let [heartColor, setHearColor] = useState(styles.save);
 
@@ -22,6 +22,10 @@ export default ({ buttonName, buttonIcon }) => {
         setHearColor(styles.save)
       }
     }
+    if (buttonName === 'Share') {
+      console.log('shared button was clicked. from button comp')
+      shareHandler()
+    }
   }
 
   let shareIcon = (<svg aria-hidden="true" role="presentation" focusable="false" viewBox="0 0 32 32" className={styles.share}><g vectorEffect="non-scaling-stroke" transform="translate(0,0)scale(1,1)" fill="none" fillRule="evenodd" stroke="#000" strokeWidth="2"><path d="m27 18v9c0 1.1045695-.8954305 2-2 2h-18c-1.1045695 0-2-.8954305-2-2v-9"></path><path d="m4.5 14.5h23z" transform="matrix(0 1 -1 0 30.5 -1.5)"></path><path d="m6 13 9.2928932-9.29289322c.3905243-.39052429 1.0236893-.39052429 1.4142136 0l9.2928932 9.29289322"></path></g></svg>)
@@ -31,7 +35,7 @@ export default ({ buttonName, buttonIcon }) => {
   return (
     <div onMouseEnter={onMouseEnterHandler} onMouseLeave={onMouseLeaveHandler} className={background} onClick={clickHandler}>
       {(buttonName === 'Save') ? saveIcon : shareIcon}
-      <p className={styles.buttonName}>{buttonName}</p>
+      <p className={styles.buttonName}>{(isLabeled) ? buttonName : null}</p>
     </div>
   )
 }

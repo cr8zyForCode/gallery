@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: .05px solid #ffffff;
+  border-radius: 18px;
+}
+
+.bars {
+  display: block;
+  fill: none;
+  height: 16px;
+  width: 16px;
+  stroke: currentcolor;
+  stroke-width: 3;
+  overflow: visible;
+  // fill: none;
+  // fill-rule: nonzero;
+}
+
+.user {
+  display: block;
+  height: 30px;
+  width: 30px;
+  fill: currentcolor;
+  padding-left: 4px;
+}

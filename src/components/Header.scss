@@ -1,13 +1,18 @@
 $colour: red;
 
-.header {
+.container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 .owner {
   display: flex;
   padding-top: 10px;
+  height: 20px;
+  overflow: visible;
 }
 
 .text {
@@ -18,4 +23,10 @@ $colour: red;
 .buttons {
   display: flex;
   flex: 1;
+}
+
+.icon {
+  height: 14;
+  width: 14;
+  fill: black;
 }

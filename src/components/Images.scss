@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  justify-content: center;
+  padding-left: 7%;
+  padding-right: 7%;
+}
+
+.largeImage {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.smallImages {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 8px;
+  height: 345;
+}

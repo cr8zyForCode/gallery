@@ -1,0 +1,27 @@
+.button {
+  cursor: pointer;
+  position: relative;
+  border-radius: 50%;
+  border-style: none;
+  outline: 0px;
+  background-color: transparent;
+  border: 1px solid black;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.svg {
+  display: block;
+  fill: none;
+  height: 12px;
+  width: 12px;
+  stroke: currentcolor;
+  stroke-width: 5.33333;
+  overflow: visible;
+}
+
+//transition
+// -ms-transform 0.25s ease 0s, -webkit-transform 0.25s ease 0s, transform 0.25s ease 0s !important;

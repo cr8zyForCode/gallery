@@ -7,18 +7,19 @@ import Button from './Header/Button.jsx';
 
 import styles from './Header.scss';
 
-export default ({ description, starRating, totalReviews, location }) => {
+export default ({ description, starRating, totalReviews, location, shareHandler }) => {
 
   return (
-    <div className={styles.header}>
+    <div className={styles.container}>
       <Description description={description} />
       <div className={styles.owner} >
         <div className={styles.text}>
+          <ion-icon name="star"></ion-icon>
           <Rating starRating={starRating} totalReviews={totalReviews} />
           <Location location={location} />
         </div>
         <div className={styles.buttons}>
-          <Button buttonName="Share" />
+          <Button buttonName="Share" shareHandler={shareHandler} />
           <Button buttonName="Save" />
         </div>
       </div>
