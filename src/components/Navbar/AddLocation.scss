@@ -1,12 +1,13 @@
 .container {
-  padding: 10px 35px 10px 35px;
+  padding: 2px 60px 2px 60px;
+  height: 32.5px;
   border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   border: 1px solid 	#B0B0B0;
   background-color: inherit;
-  border-left: 1px solid black;
+  overflow: hidden;
 }
 
 .icon {

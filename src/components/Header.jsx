@@ -11,18 +11,21 @@ export default ({ description, starRating, totalReviews, location, shareHandler 
 
   return (
     <div className={styles.container}>
-      <Description description={description} />
-      <div className={styles.owner} >
-        <div className={styles.text}>
-          <ion-icon name="star"></ion-icon>
-          <Rating starRating={starRating} totalReviews={totalReviews} />
-          <Location location={location} />
-        </div>
-        <div className={styles.buttons}>
-          <Button buttonName="Share" shareHandler={shareHandler} />
-          <Button buttonName="Save" />
-        </div>
+      {/* <div className={styles.textContainer}>   */}
+      {/* <Description description={description} /> */}
+      {/* <div className={styles.owner} > */}
+      <div className={styles.text}>
+        <ion-icon name="star"></ion-icon>
+        <Rating starRating={starRating} totalReviews={totalReviews} />
+        <Location location={location} />
       </div>
+      <div className={styles.buttons}>
+        <Button buttonName="Share" shareHandler={shareHandler} />
+        <Button buttonName="Save" />
+      </div>
+      {/* </div> */}
+
     </div>
+    // </div>
   )
 };

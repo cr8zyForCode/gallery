@@ -2,6 +2,9 @@
   display: grid;
   height: 100vh;
   grid-template: 100px 1fr / auto;
+  background-color: #ffffff;
+  padding: 0;
+  margin:0;
 }
 
 .header {

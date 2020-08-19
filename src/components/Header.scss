@@ -2,31 +2,42 @@ $colour: red;
 
 .container {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-left: 10%;
-  padding-right: 10%;
+  // justify-content: center;
+  // flex-direction: column;
+  width: 80%;
+  align-items: center;
+  // padding: 0;
+  // margin:0;
+}
+
+.textContainer {
+  display: flex;
+  // justify-content: center;
 }
 
 .owner {
   display: flex;
-  padding-top: 10px;
+  padding-top: 5px;
   height: 20px;
-  overflow: visible;
+  // overflow: visible;
+  width: 100%;
 }
 
 .text {
   display: flex;
-  flex: 8
+  flex: 8;
+  width: 100%;
 }
 
 .buttons {
   display: flex;
+  align-items: center;
   flex: 1;
+  height: 20px;
 }
 
 .icon {
-  height: 14;
-  width: 14;
+  height: 14px;
+  width: 14px;
   fill: black;
 }

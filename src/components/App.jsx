@@ -8,6 +8,8 @@ import Modal from './Modal.jsx';
 import ShareModal from './ShareModal.jsx';
 import styles from './App.scss';
 
+import Description from './Header/Description.jsx';
+
 export default () => {
   const [isLoading, setLoading] = useState(true);
 
@@ -67,16 +69,23 @@ export default () => {
       setShareModal(styles.showShareModal);
     }
   };
+
   useEffect(() => {
     getHouse()
   }, []);
   if (isLoading) {
     return (<div>...</div>)
   }
+
   return (
     <div className={styles.container}>
       <NavBar />
-      <Header description={home.description} starRating={home.starRating} totalReviews={home.reviewTotal} location={home.location} shareHandler={shareHandler} />
+      <div className={styles.desc}>
+        <Description description={home.description} />
+      </div>
+      <div className={styles.header}>
+        <Header description={home.description} starRating={home.starRating} totalReviews={home.reviewTotal} location={home.location} shareHandler={shareHandler} />
+      </div>
       <Images images={allImages} showAllImages={showAllImages} />
       <div className={modal}>
         <Modal showAllImages={showAllImages} allImages={allImages} shareHandler={shareHandler} currentPic={currentPic} />
