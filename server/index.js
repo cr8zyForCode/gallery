@@ -9,8 +9,7 @@ const db = require('../db/index');
 let dbQueries = require('./models/properties');
 
 //send static files inside the public folder
-app.use(express.static(path.join(__dirname, '../public')));
-
+app.use('/rooms/:id', express.static(path.join(__dirname, '../public')));
 app.use(express.json());
 
 app.get('/properties/:id', (req, res) => {

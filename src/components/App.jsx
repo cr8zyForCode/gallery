@@ -25,7 +25,8 @@ export default () => {
   const [shareModal, setShareModal] = useState(styles.hideShareModal);
 
   let getHouse = () => {
-    let id = Math.floor(Math.random() * 20);
+    let id = window.location.pathname.split('/')[2];
+    console.log(id)
     axios.get(`/properties/${id}`)
       .then((house) => {
         let houseInfo = house.data[0];
