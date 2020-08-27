@@ -10,4 +10,7 @@ const getProperties = (_id, callback) => {
   });
 };
 
+const postProperty = () => { };
+
+
 exports.getProperties = getProperties;
