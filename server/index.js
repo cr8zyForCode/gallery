@@ -27,17 +27,32 @@ app.get('/properties/:id', (req, res) => {
   });
 });
 
-app.post('/newimages', (req, res) => {
-  console.log("POST request gotten");
+app.post('/property/:id', (req, res) => {
+  console.log("POST/property request gotten");
   res.status(201).send("POST gotten in server");
 });
 
-app.put('/updateimages', (req, res) => {
+app.post('/images', (req, res) => {
+  console.log("POST/images request gotten");
+  res.status(201).send("POST gotten in server");
+});
+
+app.patch('/property', (req, res) => {
   console.log("PUT request gotten");
   res.status(204).send("PUT gotten in server");
 });
 
-app.delete('/deleteimages', (req, res) => {
+app.patch('/images', (req, res) => {
+  console.log("PUT request gotten");
+  res.status(204).send("PUT gotten in server");
+});
+
+app.delete('/property/:id', (req, res) => {
+  console.log("DELETE request gotten");
+  res.status(204).send("DELETE gotten in server");
+})
+
+app.delete('/images', (req, res) => {
   console.log("DELETE request gotten");
   res.status(204).send("DELETE gotten in server");
 })

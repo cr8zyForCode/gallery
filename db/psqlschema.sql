@@ -1,0 +1,41 @@
+-- ---
+-- Globals
+-- ---
+
+-- SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+-- SET FOREIGN_KEY_CHECKS=0;
+
+-- ---
+-- Table 'properties'
+--
+-- ---
+
+DROP TABLE IF EXISTS `properties`;
+
+CREATE TABLE `properties` (
+  id INTEGER(6) NULL AUTO_INCREMENT DEFAULT NULL,
+  description VARCHAR(30) NULL DEFAULT NULL,
+  starRating INTEGER(3) NULL DEFAULT NULL,
+  reviewTotal INTEGER(4) NULL DEFAULT NULL,
+  superhost CHAR(5) NULL DEFAULT NULL,
+  location VARCHAR(20) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+-- ---
+-- Table 'bedroomimages'
+--
+-- ---
+
+DROP TABLE IF EXISTS `images`;
+
+CREATE TABLE `images` (
+  id INTEGER(6) NULL AUTO_INCREMENT DEFAULT NULL,
+  property_id INTEGER(9) NULL DEFAULT NULL,
+  url VARCHAR(200) NULL DEFAULT NULL,
+  description VARCHAR(30) NULL DEFAULT NULL,
+  order INTEGER(3) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+-- PROPERTYID IS A FOREIGN KEY TO PROPERTIES TABLE ID
