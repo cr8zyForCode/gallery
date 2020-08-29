@@ -10,16 +10,18 @@
 --
 -- ---
 
-DROP TABLE IF EXISTS `properties`;
+DROP TABLE IF EXISTS properties;
 
-CREATE TABLE `properties` (
-  id INTEGER(6) NULL AUTO_INCREMENT DEFAULT NULL,
-  description VARCHAR(30) NULL DEFAULT NULL,
-  starRating INTEGER(3) NULL DEFAULT NULL,
-  reviewTotal INTEGER(4) NULL DEFAULT NULL,
-  superhost CHAR(5) NULL DEFAULT NULL,
-  location VARCHAR(20) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE properties (
+  id INTEGER NOT NULL,
+  small_description VARCHAR(30) NULL DEFAULT NULL,
+  star_rating INTEGER NULL DEFAULT NULL,
+  review_total INTEGER NULL DEFAULT NULL,
+  superhost BOOLEAN NULL DEFAULT NULL,
+  city VARCHAR(50) NULL DEFAULT NULL,
+  state_province VARCHAR(20) NULL DEFAULT NULL,
+  country VARCHAR(20) NULL DEFAULT NULL,
+  PRIMARY KEY (id)
 );
 
 -- ---
@@ -27,15 +29,20 @@ CREATE TABLE `properties` (
 --
 -- ---
 
-DROP TABLE IF EXISTS `images`;
+DROP TABLE IF EXISTS images;
 
-CREATE TABLE `images` (
-  id INTEGER(6) NULL AUTO_INCREMENT DEFAULT NULL,
-  property_id INTEGER(9) NULL DEFAULT NULL,
-  url VARCHAR(200) NULL DEFAULT NULL,
-  description VARCHAR(30) NULL DEFAULT NULL,
-  order INTEGER(3) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE images (
+  id INTEGER NOT NULL,
+  property_id INTEGER NULL DEFAULT NULL,
+  url VARCHAR(300) NULL DEFAULT NULL,
+  small_description VARCHAR(30) NULL DEFAULT NULL,
+  grouping INTEGER NULL DEFAULT NULL,
+  PRIMARY KEY (id)
 );
 
 -- PROPERTYID IS A FOREIGN KEY TO PROPERTIES TABLE ID
+
+COPY images(id, property_id, url, small_description, grouping)
+FROM '/Users/luna/Documents/HACKREACTOR/HRSF129/SDC/gallery/db/dataGenerators/imagesData.csv'
+DELIMITER ','
+CSV HEADER;

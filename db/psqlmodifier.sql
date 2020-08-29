@@ -35,3 +35,18 @@ ALTER TABLE `kitchenimages` ADD FOREIGN KEY (property) REFERENCES `properties` (
 -- ('','','','');
 -- INSERT INTO `kitchenimages` (`id`,`property`,`imageURL`,`description`) VALUES
 -- ('','','','');
+
+
+-- test for properties table
+
+INSERT INTO properties
+(id, small_description, star_rating, review_total, superhost, city, state_province, country)
+VALUES
+(3, 'very nice', 1.4, 15, true, 'Los Angeles', 'CA', 'United States');
+
+-- test for images table
+
+INSERT INTO images
+(id, property_id, url, small_description, grouping)
+VALUES
+(2,2, 'asdf.com', 'not nice', 2);
