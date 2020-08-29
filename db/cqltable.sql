@@ -8,7 +8,7 @@ CREATE TABLE properties.property (
   description text,
   starRating number,
   reviewTotal number,
-  superhost text,
+  superhost boolean,
   location text,
   PRIMARY KEY (id)
 );
