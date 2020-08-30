@@ -53,8 +53,8 @@ const makeImagesTableData = (propertyEntries, imagesPerProperty) => {
     // properdy_id
     // increment property id by one every time module for grouping factor  passes 0
 
-    dataString += `${i}, ${propertyIdTracker}, '${urls[i % 16]}', `;
-    dataString += `'${descriptions[i % 7]}', ${groupings[i % groupingFactor]}\n`;
+    dataString += `${i},${propertyIdTracker},'${urls[i % 16]}', `;
+    dataString += `'${descriptions[i % 7]}',${groupings[i % groupingFactor]}\n`;
 
     if (i % groupingFactor === 0) {
       propertyIdTracker++
@@ -62,7 +62,8 @@ const makeImagesTableData = (propertyEntries, imagesPerProperty) => {
   }
 
   return new Promise((resolve, reject) => {
-    fs.writeFile('imagesData.csv', dataString, (err, data) => {
+    // fs.writeFile('imagesData.csv', dataString, (err, data) => {
+    fs.createWriteStream('imagesData.csv', dataString, (err, data) => {
       if (err) {
         reject(err);
       } else {

@@ -39,13 +39,14 @@ const makePropertiesTableData = (entries) => {
   let dataString = `id, small_description, star_rating, `;
   dataString += `review_total, superhost, city,state_province, country\n`;
   for (let i = 1; i <= entries; i++) {
-    dataString += `'${i}', '${descriptions[i % 9]}', ${ratings[i % 9]}, `;
-    dataString += `${reviewTotals[i % 9]}, ${isSuperhost[i % 2]}, `;
-    dataString += `'${cities[i % 9]}', '${states[i % 3]}', '${countries[i % 4]}'\n`;
+    dataString += `${i},'${descriptions[i % 9]}',${ratings[i % 9]},`;
+    dataString += `${reviewTotals[i % 9]},${isSuperhost[i % 2]},`;
+    dataString += `'${cities[i % 9]}','${states[i % 3]}','${countries[i % 4]}'\n`;
   }
 
   return new Promise((resolve, reject) => {
-    fs.writeFile('propertiesData.csv', dataString, (err, data) => {
+    // fs.writeFile('propertiesData.csv', dataString, (err, data) => {
+    fs.createWriteStream('propertiesData.csv', dataString, (err, data) => {
       if (err) {
         reject(err);
       } else {
