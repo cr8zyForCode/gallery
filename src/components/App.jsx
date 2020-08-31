@@ -27,7 +27,7 @@ export default () => {
   let getHouse = () => {
     let id = window.location.pathname.split('/')[2];
     console.log(id)
-    axios.get(`/properties/${id}`)
+    axios.get(`/property/${id}`)
       .then((house) => {
         let houseInfo = house.data[0];
         setSuperhost(houseInfo.superhost);

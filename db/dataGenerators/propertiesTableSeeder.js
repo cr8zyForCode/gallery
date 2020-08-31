@@ -1,6 +1,18 @@
 const fs = require('fs');
+const v8 = require('v8');
+const limitations = require('./dataCreater.js');
 
-// array of small_descriptions
+// HOW MANY PROPERTY ENTRIES DO YOU WANT TO GENERATE
+const PE = 10000000;
+
+const checkMemoryNative = () => {
+  console.log('Memory Usage: ', process.memoryUsage())
+};
+
+const printHeapStats = () => {
+  console.log('Heap Status: ', v8.getHeapSpaceStatistics())
+};
+
 const descriptions = [
   'small and charming',
   'beautyful views',
@@ -12,13 +24,9 @@ const descriptions = [
   'great glamping',
   'watch the stars'
 ];
-// array of star_rating
 const ratings = [3.8, 3.9, 4.1, 4.3, 4.5, 2.9, 3, 4];
-// array of review_total
 const reviewTotals = [22, 12, 43, 54, 13, 5, 34];
-// array of superhost option
 const isSuperhost = [true, false, false, false, false, false];
-// arrya of cities
 const cities = [
   'Los Angeles',
   'Irvine',
@@ -32,30 +40,41 @@ const cities = [
   'Alameda',
   'Vancouver'
 ];
-// array of state_province
 const states = ['CA', 'AL', 'OR', 'CA', 'BC'];
-// array of countries
 const countries = ['United States', 'United States', 'United States', 'Canada'];
 
-const makePropertiesTableData = (entries) => {
-  let dataString = `id, small_description, star_rating, `;
-  dataString += `review_total, superhost, city,state_province, country\n`;
-  for (let i = 1; i <= entries; i++) {
-    dataString += `${i},'${descriptions[i % 9]}',${ratings[i % 8]},`;
-    dataString += `${reviewTotals[i % 7]},${isSuperhost[i % 6]},`;
-    dataString += `'${cities[i % 11]}','${states[i % 5]}','${countries[i % 4]}'\n`;
-  }
+const writePropertyData = fs.createWriteStream('propertiesData.csv');
+writePropertyData.write(`id,small_description,star_rating,review_total,superhost,city,tate_province,country\n`);
 
-  return new Promise((resolve, reject) => {
-    fs.writeFile('propertiesData.csv', dataString, (err, data) => {
-      // fs.createWriteStream('propertiesData.csv', dataString, (err, data) => {
-      if (err) {
-        reject(err);
+const makePropertiesTableData = (writer, encoding, callback) => {
+  let i = PE;
+  let id = 0;
+  function write() {
+    let ok = true;
+    do {
+      i--;
+      id++;
+      let data = `${id},'${descriptions[i % 9]}',${ratings[i % 8]},`;
+      data += `${reviewTotals[i % 7]},${isSuperhost[i % 6]},`;
+      data += `'${cities[i % 11]}','${states[i % 5]}','${countries[i % 4]}'\n`;
+      if (i === 0) {
+        writer.write(data, encoding, callback);
       } else {
-        resolve(data);
+        ok = writer.write(data, encoding);
+        // if (!ok) {
+        //   checkMemoryNative();
+        //   printHeapStats();
+        // }
       }
-    })
-  })
-}
+    } while (i > 0 && ok);
+    if (i > 0) {
+      writer.once('drain', write);
+    }
+  }
+  write();
+};
 
-module.exports = { makePropertiesTableData };
+makePropertiesTableData(writePropertyData, 'utf-8', () => {
+  writePropertyData.end();
+  console.log(`wrote ${PE} property entries!`);
+});
