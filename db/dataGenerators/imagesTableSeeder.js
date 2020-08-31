@@ -31,46 +31,73 @@ const descriptions = [
   'backyard'
 ];
 
-const makeImagesTableData = (propertyEntries, imagesPerProperty) => {
-  imagesPerProperty = imagesPerProperty < 2 ? 2 : imagesPerProperty;
-  // takes in the ammount of property entries
+// const makeImagesTableData = (propertyEntries, imagesPerProperty) => {
+//   imagesPerProperty = imagesPerProperty < 2 ? 2 : imagesPerProperty;
 
-  // arrya of porperty id
-  // ids to be the same at the amount of entries
-  // grouping
-  const groupings = Array.from(Array(imagesPerProperty), (_, i) => i + 1);
-  const groupingFactor = groupings.length;
+// const groupings = Array.from(Array(imagesPerProperty), (_, i) => i + 1);
+// const groupingFactor = groupings.length;
 
-  // create a CSV string
-  let dataString = `id, property_id, url, small_description, grouping\n`;
+//   let dataString = `id, property_id, url, small_description, grouping\n`;
+//   let entries = propertyEntries * imagesPerProperty;
+//   let propertyIdTracker = 1;
 
+//   for (let i = 1; i <= entries; i++) {
+//     dataString += `${i},${propertyIdTracker},'${urls[i % 16]}', `;
+//     dataString += `'${descriptions[i % 7]}',${groupings[i % groupingFactor]}\n`;
+//     if (i % groupingFactor === 0) {
+//       propertyIdTracker++
+//     };
+//   }
 
-  // total images is propertyEntries multiplied by imagesPerProperty
-  let entries = propertyEntries * imagesPerProperty;
-  let propertyIdTracker = 1;
+//   return new Promise((resolve, reject) => {
+//     fs.writeFile('imagesData.csv', dataString, (err, data) => {
+//       // fs.createWriteStream('imagesData.csv', dataString, (err, data) => {
+//       if (err) {
+//         reject(err);
+//       } else {
+//         resolve(data);
+//       }
+//     })
+//   })
+// }
 
-  for (let i = 1; i <= entries; i++) {
-    // properdy_id
-    // increment property id by one every time module for grouping factor  passes 0
+const writeImageData = fs.createWriteStream('imagesData.csv');
+writeImageData.write(`id, property_id, url, small_description, grouping\n`, 'utf8');
 
-    dataString += `${i},${propertyIdTracker},'${urls[i % 16]}', `;
-    dataString += `'${descriptions[i % 7]}',${groupings[i % groupingFactor]}\n`;
-
-    if (i % groupingFactor === 0) {
-      propertyIdTracker++
-    };
-  }
-
-  return new Promise((resolve, reject) => {
-    // fs.writeFile('imagesData.csv', dataString, (err, data) => {
-    fs.createWriteStream('imagesData.csv', dataString, (err, data) => {
-      if (err) {
-        reject(err);
+function makeImagesTableData(writer, encoding, callback) {
+  let i = 5000000;
+  let id = 0;
+  function write() {
+    let ok = true;
+    do {
+      // const groupings = Array.from(Array(imagesPerProperty), (_, i) => i + 1);
+      // const groupingFactor = groupings.length;
+      i -= 1;
+      id += 1;
+      // let data = `${i},${propertyIdTracker},'${urls[i % 16]}',`;
+      // data += `'${descriptions[i % 7]}',${groupings[i % groupingFactor]}\n`;
+      let data = `${id},${id},'${urls[i % 16]}',`;
+      data += `'${descriptions[i % 7]}',${id}\n`;
+      if (i === 0) {
+        writer.write(data, encoding, callback);
       } else {
-        resolve(data);
+        // see if we should continue, or wait
+        // don't pass the callback, because we're not done yet.
+        ok = writer.write(data, encoding);
       }
-    })
-  })
+    } while (i > 0 && ok);
+    if (i > 0) {
+      // had to stop early!
+      // write some more once it drains
+      writer.once('drain', write);
+    }
+  }
+  write()
 }
+
+makeImagesTableData(writeImageData, 'utf-8', () => {
+  writeImageData.end();
+});
+
 
 module.exports = { makeImagesTableData };

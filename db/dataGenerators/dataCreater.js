@@ -2,7 +2,7 @@ const images = require('./imagesTableSeeder.js')
 const properties = require('./propertiesTableSeeder.js')
 
 // HOW MANY PROPERTY ENTRIES YOU WANT TO GENERATE
-let propertyEntries = 3000000;
+let propertyEntries = 4500000;
 let imagesPerProperty = 2;
 
 properties.makePropertiesTableData(propertyEntries)
