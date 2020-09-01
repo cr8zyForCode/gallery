@@ -16,13 +16,14 @@ CSV HEADER;
 --
 -- TABLE MODIFIERS
 --
+-- DROP THE A CONTRAINT ON THE TABLE
+ALTER TABLE images DROP CONSTRAINT images_pkey;
+--
 -- ALTER TABLE images to ADD  fireign key propertry
 ALTER TABLE images ADD FOREIGN KEY (property_id) REFERENCES properties (id);
--- ---
 --
 -- ALTER TABLE images ADD PRIMARY KEY (property_id);
 ALTER TABLE images ADD PRIMARY KEY (id);
--- ---
 --
 -- ALTER TABLE images ADD PRIMARY KEY (property_id);
 CREATE INDEX idx_imgaes_per_property ON images (property_id, id);

@@ -20,13 +20,13 @@
 EXPLAIN ANALYZE
 SELECT *
 FROM images
-WHERE property_id = 20;
--- 5.534ms
+WHERE property_id = 825364;
+-- 5.534ms -- w/o the primary key index = 3.195ms
 
 EXPLAIN ANALYZE
 INSERT INTO images (property_id, url, small_description, grouping)
-VALUES (55555, 'https://sdc08092020image.s3-us-west-1.amazonaws.com/34.jpeg', 'inserted value', 60);
--- 8.748ms
+VALUES (554445, 'https://sdc08092020image.s3-us-west-1.amazonaws.com/34.jpeg', 'inserted value', 60);
+-- 8.748ms  -- w/o the primary key index = 4.201ms
 
 EXPLAIN ANALYZE
 SELECT *
@@ -38,13 +38,13 @@ EXPLAIN ANALYZE
 UPDATE images
 SET  url='https://sdc08092020image.s3-us-west-1.amazonaws.com/34.jpeg',
 small_description= 'CHANGED VALUE'
-WHERE property_id = 44455342;
--- 1.456ms
+WHERE property_id = 4423442;
+-- 1.456ms  -- w/o the primary key index = 5.379ms
 
 EXPLAIN ANALYZE
 DELETE FROM images
-WHERE property_id = 456123789;
--- 0.049ms
+WHERE property_id = 4587579;
+-- 0.049ms  -- w/o the primary key index = 2.117ms
 
 --
 INSERT INTO properties
@@ -56,3 +56,6 @@ INSERT INTO images
 (id, property_id, url, small_description, grouping)
 VALUES
 (2,2, 'asdf.com', 'not nice', 2);
+--
+-- get database size
+SELECT pg_size_pretty( pg_database_size('gallery') );
