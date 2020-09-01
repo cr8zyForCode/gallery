@@ -1,20 +1,9 @@
 -- ---
 -- Globals
 -- ---
-
 -- SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- SET FOREIGN_KEY_CHECKS=0;
-
 -- ---
--- Table 'properties'
---
--- ---
-
-
---
-
--- PROPERTYID IS A FOREIGN KEY TO PROPERTIES TABLE ID
-
 --
 DROP TABLE IF EXISTS properties;
 --
@@ -38,22 +27,5 @@ CREATE TABLE images (
   url VARCHAR(300) NULL DEFAULT NULL,
   small_description VARCHAR(30) NULL DEFAULT NULL,
   grouping INTEGER NULL DEFAULT NULL,
-  PRIMARY KEY (id)
+  PRIMARY KEY (property_id)
 );
---
--- ---
-
--- SCRIPT TO RUN FOR BULK LOAD INTO POSTGRES
-
--- FOR POPERTIES TABLE
-COPY properties(id, small_description, star_rating, review_total, superhost, city, state_province, country)
-FROM '/Users/luna/Documents/HACKREACTOR/HRSF129/SDC/gallery/db/dataGenerators/propertiesData.csv'
-DELIMITER ','
-CSV HEADER;
---
--- FOR IMAGES TABLE
-COPY images(id, property_id, url, small_description, grouping)
-FROM '/Users/luna/Documents/HACKREACTOR/HRSF129/SDC/gallery/db/dataGenerators/imagesData.csv'
-DELIMITER ','
-CSV HEADER;
---

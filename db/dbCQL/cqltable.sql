@@ -5,11 +5,13 @@ CREATE KEYSPACE properties WITH replication =
 
 CREATE TABLE properties.property (
   id int,
-  description text,
-  starRating number,
-  reviewTotal number,
+  small_description text,
+  star_rating number,
+  review_total number,
   superhost boolean,
-  location text,
+  city text,
+  state_province text,
+  country text,
   PRIMARY KEY (id)
 );
 
@@ -17,8 +19,8 @@ CREATE TABLE properties.images_by_property (
   id int,
   property_id int,
   url text,
-  description text,
-  order int,
+  small_description text,
+  grouping int,
   PRIMARY KEY (property_id)
   AND CLUSTERING ORDER BY (order ASC)
 );

@@ -5,14 +5,6 @@ const limitations = require('./dataCreater.js');
 // HOW MANY PROPERTY ENTRIES DO YOU WANT TO GENERATE
 const PE = 10000000;
 
-const checkMemoryNative = () => {
-  console.log('Memory Usage: ', process.memoryUsage())
-};
-
-const printHeapStats = () => {
-  console.log('Heap Status: ', v8.getHeapSpaceStatistics())
-};
-
 const descriptions = [
   'small and charming',
   'beautyful views',
@@ -44,7 +36,7 @@ const states = ['CA', 'AL', 'OR', 'CA', 'BC'];
 const countries = ['United States', 'United States', 'United States', 'Canada'];
 
 const writePropertyData = fs.createWriteStream('propertiesData.csv');
-writePropertyData.write(`id,small_description,star_rating,review_total,superhost,city,tate_province,country\n`);
+writePropertyData.write(`id,small_description,star_rating,review_total,superhost,city,tate_province,country`);
 
 const makePropertiesTableData = (writer, encoding, callback) => {
   let i = PE;
@@ -54,17 +46,13 @@ const makePropertiesTableData = (writer, encoding, callback) => {
     do {
       i--;
       id++;
-      let data = `${id},'${descriptions[i % 9]}',${ratings[i % 8]},`;
+      let data = `\n${id},'${descriptions[i % 9]}',${ratings[i % 8]},`;
       data += `${reviewTotals[i % 7]},${isSuperhost[i % 6]},`;
-      data += `'${cities[i % 11]}','${states[i % 5]}','${countries[i % 4]}'\n`;
+      data += `'${cities[i % 11]}','${states[i % 5]}','${countries[i % 4]}'`;
       if (i === 0) {
         writer.write(data, encoding, callback);
       } else {
         ok = writer.write(data, encoding);
-        // if (!ok) {
-        //   checkMemoryNative();
-        //   printHeapStats();
-        // }
       }
     } while (i > 0 && ok);
     if (i > 0) {
