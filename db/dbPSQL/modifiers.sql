@@ -14,6 +14,10 @@ FROM '/Users/luna/Documents/HACKREACTOR/HRSF129/SDC/gallery/db/dataGenerators/im
 DELIMITER ','
 CSV HEADER;
 --
+--
+create sequence player_id_seq;
+alter table player alter playerid set default nextval('player_id_seq');
+Select setval('player_id_seq', 2000051 ); --set to the highest current value of playerID
 -- TABLE MODIFIERS
 --
 -- DROP THE A CONTRAINT ON THE TABLE
