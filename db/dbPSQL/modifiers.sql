@@ -41,10 +41,7 @@ SELECT setval('image_id_seq', 172727273);
 --
 -- ---
 -- Foreign Keys
--- ---
-ALTER TABLE `bedroomimages` ADD FOREIGN KEY (property) REFERENCES `properties` (`id`);
 --
--- Latest table version
 ALTER TABLE images ADD FOREIGN KEY (property_id) REFERENCES properties (id);
 -- ---
 -- Table Properties
