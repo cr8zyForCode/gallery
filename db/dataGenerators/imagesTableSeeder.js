@@ -2,7 +2,7 @@ const fs = require('fs');
 const v8 = require('v8');
 
 // HOW MANY PROPERTY ENTRIES DO YOU WANT TO HAVE IMAGES
-const PE = 10000000;
+const PE = 1000;
 const randomIPP = [5, 15, 10, 15, 10, 20, 55, 20, 12, 11, 17];
 
 const descriptions = [

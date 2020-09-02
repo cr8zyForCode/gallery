@@ -1,9 +1,8 @@
 const fs = require('fs');
 const v8 = require('v8');
-const limitations = require('./dataCreater.js');
 
 // HOW MANY PROPERTY ENTRIES DO YOU WANT TO GENERATE
-const PE = 10000000;
+const PE = 1000;
 
 const descriptions = [
   'small and charming',
