@@ -1,21 +1,13 @@
 const fs = require('fs');
-const v8 = require('v8');
+const fake = require('./fakeData.js');
 
 // HOW MANY PROPERTY ENTRIES DO YOU WANT TO HAVE IMAGES
-const PE = 1000;
-const randomIPP = [5, 15, 10, 15, 10, 20, 55, 20, 12, 11, 17];
+const PE = 10000000;
+const randomIPP = fake.ipps;
+const descriptions = fake.imageDescriptions;
 
-const descriptions = [
-  'house',
-  'bathroom',
-  'bathroom',
-  'bedroom',
-  'bedroom',
-  'bedroom',
-  'backyard'
-];
 const writeImageData = fs.createWriteStream('imagesData.csv');
-writeImageData.write(`id, property_id, url, small_description, grouping`, 'utf8');
+writeImageData.write(`id,property_id,url,small_description,grouping`, 'utf8');
 
 let imageEntries = 0;
 

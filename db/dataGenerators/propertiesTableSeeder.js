@@ -1,41 +1,20 @@
 const fs = require('fs');
-const v8 = require('v8');
+const fake = require('./fakeData.js');
 
 // HOW MANY PROPERTY ENTRIES DO YOU WANT TO GENERATE
-const PE = 1000;
+const PE = 2000000;
 
-const descriptions = [
-  'small and charming',
-  'beautyful views',
-  'perfect sunsets',
-  'hickers dream',
-  'ocean breeze',
-  'charming architecture',
-  'fun summer stay',
-  'great glamping',
-  'watch the stars'
-];
-const ratings = [3.8, 3.9, 4.1, 4.3, 4.5, 2.9, 3, 4];
-const reviewTotals = [22, 12, 43, 54, 13, 5, 34];
-const isSuperhost = [true, false, false, false, false, false];
-const cities = [
-  'Los Angeles',
-  'Irvine',
-  'Laguna',
-  'Berkeley',
-  'Albany',
-  'San Francisco',
-  'Palm Springs',
-  'Santa Monica',
-  'Oakland',
-  'Alameda',
-  'Vancouver'
-];
-const states = ['CA', 'AL', 'OR', 'CA', 'BC'];
-const countries = ['United States', 'United States', 'United States', 'Canada'];
+// FAKE DATA IMPORTED FROM fakeData.js
+const descriptions = fake.propertyDescriptions;
+const ratings = fake.ratings;
+const reviewTotals = fake.reviewTotals;
+const isSuperhost = fake.isSuperhost;
+const cities = fake.cities;
+const states = fake.states;
+const countries = fake.countries;
 
 const writePropertyData = fs.createWriteStream('propertiesData.csv');
-writePropertyData.write(`id,small_description,star_rating,review_total,superhost,city,tate_province,country`);
+writePropertyData.write(`id,small_description,star_rating,review_total,superhost,city,state_province,country`);
 
 const makePropertiesTableData = (writer, encoding, callback) => {
   let i = PE;
