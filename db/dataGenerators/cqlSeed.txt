@@ -1,4 +1,10 @@
 #!/bin/bash
+cqlsh -e "COPY gallery.images_by_property FROM '/Users/luna/Documents/HACKREACTOR/HRSF129/SDC/gallery/db/dataGenerators/imagesData1.csv' WITH DELIMITER=',' AND HEADER=TRUE;"
+echo "***FILE 1 DONE***"
+cqlsh -e "COPY gallery.images_by_property FROM '/Users/luna/Documents/HACKREACTOR/HRSF129/SDC/gallery/db/dataGenerators/imagesData2.csv' WITH DELIMITER=',' AND HEADER=TRUE;"
+echo "***FILE 2 DONE***"
+cqlsh -e "COPY gallery.images_by_property FROM '/Users/luna/Documents/HACKREACTOR/HRSF129/SDC/gallery/db/dataGenerators/imagesData3.csv' WITH DELIMITER=',' AND HEADER=TRUE;"
+echo "***FILE 3 DONE***"
 cqlsh -e "COPY gallery.images_by_property FROM '/Users/luna/Documents/HACKREACTOR/HRSF129/SDC/gallery/db/dataGenerators/imagesData4.csv' WITH DELIMITER=',' AND HEADER=TRUE;"
 echo "***FILE 4 DONE***"
 cqlsh -e "COPY gallery.images_by_property FROM '/Users/luna/Documents/HACKREACTOR/HRSF129/SDC/gallery/db/dataGenerators/imagesData5.csv' WITH DELIMITER=',' AND HEADER=TRUE;"
