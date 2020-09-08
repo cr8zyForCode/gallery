@@ -13,19 +13,20 @@ CREATE TABLE gallery.properties (
   country varchar,
 );
 
-COPY gallery.properties FROM '/Users/luna/Documents/HACKREACTOR/HRSF129/SDC/gallery/db/dataGenerators/propertiesData10.csv' WITH DELIMITER=',' AND HEADER=TRUE;
+COPY gallery.properties FROM '/Users/luna/Documents/HACKREACTOR/HRSF129/SDC/gallery/db/dataGenerators/propertiesData1.csv' WITH DELIMITER=',' AND HEADER=TRUE;
 
 TRUNCATE TABLE gallery.properties;
 
 CREATE TABLE gallery.images_by_property (
   id int,
-  property_id int PRIMARY KEY,
+  property_id int,
   url varchar,
   small_description varchar,
-  grouping int
+  grouping int,
+  PRIMARY KEY (property_id, id)
 );
 
-COPY gallery.images_by_property FROM '/Users/luna/Documents/HACKREACTOR/HRSF129/SDC/gallery/db/dataGenerators/imagesData3.csv' WITH DELIMITER=',' AND HEADER=TRUE;
+COPY gallery.images_by_property FROM '/Users/luna/Documents/HACKREACTOR/HRSF129/SDC/gallery/db/dataGenerators/imagesData1.csv' WITH DELIMITER=',' AND HEADER=TRUE;
 
 TRUNCATE TABLE gallery.images_by_property;
 

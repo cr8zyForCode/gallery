@@ -2,8 +2,8 @@ const fs = require('fs');
 const fake = require('./fakeData.js')
 
 // HOW MANY PROPERTY ENTRIES DO YOU WANT TO GENERATE
-const entries = 87;
-const entriesPerFile = 15;
+const entries = 10000000;
+const entriesPerFile = 2000000;
 // FAKE DATA IMPORTED FROM fakeData.js
 const descriptions = fake.propertyDescriptions;
 const ratings = fake.ratings;

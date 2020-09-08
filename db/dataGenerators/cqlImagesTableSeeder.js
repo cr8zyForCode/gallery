@@ -26,7 +26,7 @@ function makeImagesTableData(idStart, idEnd, currentImageId, writer, encoding, c
         id++;
         imageId++;
         imageIdTracker++;
-        data += `\n${propertyIdTracker},${k + 1},${imageId},'${descriptions[i % 7]}'`
+        data += `\n${propertyIdTracker},${imageId},${k + 1},'${descriptions[i % 7]}'`
         data += `,https://sdc08092020image.s3-us-west-1.amazonaws.com/${(id + k) % 70}.jpeg`;
       }
       if (i === idStart) {
@@ -51,7 +51,7 @@ let imageIdTracker = 0;
 
 while (cadence > 0) {
   const writeImageData = fs.createWriteStream(`imagesData${fileNumber}.csv`);
-  writeImageData.write(`property_id,grouping,id,small_description,url`, 'utf8');
+  writeImageData.write(`property_id,id,grouping,small_description,url`, 'utf8');
   makeImagesTableData(startId, endId, imageIdTracker, writeImageData, 'utf-8', () => {
     writeImageData.end();
   });
