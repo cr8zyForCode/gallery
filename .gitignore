@@ -3,3 +3,7 @@ coverage
 practicePSQL
 *.csv
 .DS_Store
+script.js
+newrelic.js
+newrelic_agent.log
+dblogin.sh
