@@ -3,7 +3,7 @@ const fake = require('./fakeData.js');
 
 // HOW MANY PROPERTY ENTRIES DO YOU WANT TO HAVE IMAGES
 const entries = 10000000;
-const entriesPerFile = 1000000;
+const entriesPerFile = 115000;
 
 // FAKE DATA CONSTANTS IMPORTED FROM fakeData.js
 const randomIPP = fake.ipps;
