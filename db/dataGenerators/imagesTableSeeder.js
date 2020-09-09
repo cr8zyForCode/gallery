@@ -1,75 +1,50 @@
 const fs = require('fs');
+const fake = require('./fakeData.js');
 
-// array of urls
-const urls = [
-  "https://feccatsbucket.s3-us-west-1.amazonaws.com/cat1.jpeg",
-  "https://feccatsbucket.s3-us-west-1.amazonaws.com/cat2.jpeg",
-  "https://feccatsbucket.s3-us-west-1.amazonaws.com/cat3.jpeg",
-  "https://feccatsbucket.s3-us-west-1.amazonaws.com/cat4.jpeg",
-  "https://feccatsbucket.s3-us-west-1.amazonaws.com/cat5.jpeg",
-  "https://feccatsbucket.s3-us-west-1.amazonaws.com/cat6.jpeg",
-  "https://feccatsbucket.s3-us-west-1.amazonaws.com/cat7.jpeg",
-  "https://feccatsbucket.s3-us-west-1.amazonaws.com/cat8.jpeg",
-  "https://feccatsbucket.s3-us-west-1.amazonaws.com/cat9.jpg",
-  "https://feccatsbucket.s3-us-west-1.amazonaws.com/cat10.jpg",
-  "https://feccatsbucket.s3-us-west-1.amazonaws.com/cat11.jpg",
-  "https://feccatsbucket.s3-us-west-1.amazonaws.com/cat12.jpg",
-  "https://feccatsbucket.s3-us-west-1.amazonaws.com/cat13.jpg",
-  "https://feccatsbucket.s3-us-west-1.amazonaws.com/cat14.jpg",
-  "https://feccatsbucket.s3-us-west-1.amazonaws.com/cat15.jpg",
-  "https://feccatsbucket.s3-us-west-1.amazonaws.com/cat16.jpg"
-];
+// HOW MANY PROPERTY ENTRIES DO YOU WANT TO HAVE IMAGES
+const PE = 10000000;
+const randomIPP = fake.ipps;
+const descriptions = fake.imageDescriptions;
 
-// array of small descriptions
-const descriptions = [
-  'house',
-  'bathroom',
-  'bathroom',
-  'bedroom',
-  'bedroom',
-  'bedroom',
-  'backyard'
-];
+const writeImageData = fs.createWriteStream('imagesData.csv');
+writeImageData.write(`id,property_id,url,small_description,grouping`, 'utf8');
 
-const makeImagesTableData = (propertyEntries, imagesPerProperty) => {
-  imagesPerProperty = imagesPerProperty < 2 ? 2 : imagesPerProperty;
-  // takes in the ammount of property entries
+let imageEntries = 0;
 
-  // arrya of porperty id
-  // ids to be the same at the amount of entries
-  // grouping
-  const groupings = Array.from(Array(imagesPerProperty), (_, i) => i + 1);
-  const groupingFactor = groupings.length;
+function makeImagesTableData(writer, encoding, callback) {
 
-  // create a CSV string
-  let dataString = `id, property_id, url, small_description, grouping\n`;
+  let i = PE;
+  let id = 0;
+  let propertyIdTracker = 0;
 
-
-  // total images is propertyEntries multiplied by imagesPerProperty
-  let entries = propertyEntries * imagesPerProperty;
-  let propertyIdTracker = 1;
-
-  for (let i = 1; i <= entries; i++) {
-    // properdy_id
-    // increment property id by one every time module for grouping factor  passes 0
-
-    dataString += `${i}, ${propertyIdTracker}, '${urls[i % 16]}', `;
-    dataString += `'${descriptions[i % 7]}', ${groupings[i % groupingFactor]}\n`;
-
-    if (i % groupingFactor === 0) {
-      propertyIdTracker++
-    };
-  }
-
-  return new Promise((resolve, reject) => {
-    fs.writeFile('imagesData.csv', dataString, (err, data) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(data);
+  function write() {
+    let ok = true;
+    do {
+      i--;
+      propertyIdTracker++;
+      let ipp = randomIPP[i % 11];
+      imageEntries += ipp;
+      let data = '';
+      for (let k = 0; k < ipp; k++) {
+        id += 1;
+        data += `\n${id},${propertyIdTracker},`
+        data += `https://sdc08092020image.s3-us-west-1.amazonaws.com/${(id + k) % 70}.jpeg,`;
+        data += `'${descriptions[i % 7]}',${k + 1}`;
       }
-    })
-  })
+      if (i === 0) {
+        writer.write(data, encoding, callback);
+      } else {
+        ok = writer.write(data, encoding);
+      }
+    } while (i > 0 && ok);
+    if (i > 0) {
+      writer.once('drain', write);
+    }
+  }
+  write()
 }
 
-module.exports = { makeImagesTableData };
+makeImagesTableData(writeImageData, 'utf-8', () => {
+  writeImageData.end();
+  console.log(`wrote ${imageEntries} image  entries!`)
+});

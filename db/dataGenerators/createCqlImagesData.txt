@@ -1,0 +1,3 @@
+#!/bin/bash
+
+node cqlImagesTableSeeder.js && echo "***DONE WITH DATA FOR CSQL IMAGES***"

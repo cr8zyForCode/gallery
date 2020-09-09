@@ -1,16 +1,25 @@
-const mongoose = require('mongoose');
+const cassandra = require('cassandra-driver');
 
-mongoose.connect('mongodb://localhost/airbnb-gallery', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
+const client = new cassandra.Client({
+  contactPoints: ['localhost'],
+  keyspace: 'gallery',
+  localDataCenter: 'datacenter1'
 });
 
-//create connection and export to use in other files
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function () {
-  console.log('connected to mongodb://localhost/airbnb-gallery');
+client.connect((err) => {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log('connected to cassandra')
+  }
 });
 
+// const query = "SELECT * FROM reservations WHERE property_id = 9999999";
 
-module.exports = db;
+// client.execute(query, function (err, result) {
+//   // var reservations = result.first();
+//   //The row is an Object with column names as property keys.
+//   console.log('objectOfReservations', result.rows);
+// });
+
+module.exports = client;

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+node cqlPropertyTableSeeder.js && echo "***DONE WITH PROPERTIES DATA FOR CSQL***"
