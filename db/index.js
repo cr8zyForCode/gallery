@@ -1,8 +1,11 @@
 const cassandra = require('cassandra-driver');
 
+let authorization = new cassandra.auth.PlainTextAuthProvider('root', 'notasecret');
+
 const client = new cassandra.Client({
-  contactPoints: ['54.193.231.47'],
+  contactPoints: ['54.193.74.66'],
   keyspace: 'gallery',
+  authProvider: authorization;
   localDataCenter: 'datacenter1'
 });
 
