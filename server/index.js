@@ -2,11 +2,13 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const PORT = 3001;
+require('newrelic');
 
 //import database
 const db = require('../db/index');
 //import query models
-const dbQueries = require('./models/properties');
+// const dbQueries = require('./models/properties');
+const dbQueries = require('./models/Cassandra.js')
 
 //send static files inside the public folder
 app.use('/rooms/:id', express.static(path.join(__dirname, '../public')));
@@ -18,6 +20,19 @@ app.get('/property/:id', (req, res) => {
   console.log("GET request gottenss")
   let id = req.params.id;
   dbQueries.getProperties(id, (err, data) => {
+    if (err) {
+      res.status(400).send('error');
+    } else {
+      console.log('success')
+      res.status(200).send(data);
+    }
+  });
+});
+
+app.get('/propertyimages/:id', (req, res) => {
+  console.log("GET request gottenss")
+  let id = req.params.id;
+  dbQueries.getImages(id, (err, data) => {
     if (err) {
       res.status(400).send('error');
     } else {

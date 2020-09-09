@@ -1,0 +1,12 @@
+#!/bin/bash
+node cqlImagesTableSeeder.js && echo "***DONE WITH DATA FOR CSQL IMAGES***"
+cqlsh -k gallery -e "DROP TABLE IF EXISTS gallery.images_by_property"
+echo "DROPPED images_by_property TABLE"
+cqlsh -e "CREATE TABLE gallery.images_by_property (id int, property_id int, url varchar, small_description varchar, grouping int, PRIMARY KEY (property_id, id));"
+echo "CREATED images_by_property TABLE"
+for ((i = 1 ; i <= 87 ; i ++)); do
+  cqlsh -e "COPY gallery.images_by_property FROM '$(pwd)/imagesData${i}.csv' WITH DELIMITER=',' AND HEADER=TRUE;"
+  echo "***FILE ${i} DONE***"
+  rm imagesData${i}.csv && echo "imagesData${i} DELETED in VSC"
+done
+echo "***ALL FILES DONE***"
