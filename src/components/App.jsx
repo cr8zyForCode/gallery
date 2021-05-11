@@ -10,6 +10,8 @@ import styles from './App.scss';
 
 import Description from './Header/Description.jsx';
 
+// TODO: move all .scss files into a separate folder and import files accordingly
+
 export default () => {
   const [isLoading, setLoading] = useState(true);
 
