@@ -17,6 +17,7 @@ export default () => {
 
   const [home, setHome] = useState({});
   const [allImages, setAllImages] = useState([]);
+  // TODO: fire out if superhost if beign used, else delete, optimize
   const [superhost, setSuperhost] = useState('');
 
   const [isModalShowing, setModalShowing] = useState(false);
