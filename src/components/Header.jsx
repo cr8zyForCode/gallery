@@ -8,7 +8,7 @@ import Button from './Header/Button.jsx';
 import styles from './Header.scss';
 
 export default ({ description, starRating, totalReviews, location, shareHandler }) => {
-
+  // TODO: clean up commented out code
   return (
     <div className={styles.container}>
       {/* <div className={styles.textContainer}>   */}
