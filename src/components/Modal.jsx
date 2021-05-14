@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-
 import ShareLikeButton from './Header/Button.jsx';
-
 import CloseButton from './Modal/CloseButton.jsx';
 import ScrollButton from './Modal/ScrollButton.jsx';
-
 import styles from './Modal.scss';
 
 export default ({ showAllImages, allImages, shareHandler, currentPic }) => {
   const [currentImage, setCurrentImage] = useState(allImages);
   const [currentImageNum, setCurrentImageNum] = useState(0);
 
+  // TODO: determine if clickHandler is being used, else delete
   let clickHanlder = () => {
     showAllImages()
   };
