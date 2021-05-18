@@ -1,5 +1,4 @@
 import React from 'react';
-
 import ShareList from './ShareModal/ShareList.jsx';
 import CloseBtn from './ShareModal/CloseBtn.jsx';
 import styles from './ShareModal.scss';

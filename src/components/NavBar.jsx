@@ -7,7 +7,7 @@ import DropdownButton from './NavBar/Button1.jsx';
 import RightButton from './NavBar/Button2.jsx';
 
 import styles from './NavBar.scss';
-//asdasfssdasd
+
 export default () => {
   return (
     <div className={styles.container}>
