@@ -1,3 +1,4 @@
+// TODO: implement unit test
 // import App from '../src/components/App';
 
 // describe('<App /> renders () => {
